@@ -1,0 +1,64 @@
+name: OpenTripMap Plans and Pricing
+description: Pricing plans for the OpenTripMap Points of Interest API
+url: https://dev.opentripmap.org/price
+plans:
+  - name: Free
+    description: Non-commercial use plan for individual developers and hobbyists
+    price: 0
+    currency: USD
+    period: month
+    features:
+      - Non-commercial use only
+      - Access to all API endpoints (place list, place details, autosuggest, geocoding)
+      - JSON and GeoJSON response formats
+      - Wikipedia integration for POI descriptions
+      - Over 10 million POIs worldwide
+      - Email support
+    limits:
+      - requests_per_day: 5000
+      - requests_per_second: 10
+  - name: Starter
+    description: Entry-level commercial plan for small applications and startups
+    price: 19
+    currency: USD
+    period: month
+    features:
+      - Commercial use permitted
+      - Access to all API endpoints
+      - JSON and GeoJSON response formats
+      - Wikipedia integration for POI descriptions
+      - Over 10 million POIs worldwide
+      - Priority email support
+    limits:
+      - requests_per_day: 50000
+      - requests_per_second: 25
+  - name: Pro
+    description: Professional plan for production applications with higher throughput
+    price: 99
+    currency: USD
+    period: month
+    features:
+      - Commercial use permitted
+      - Access to all API endpoints
+      - JSON and GeoJSON response formats
+      - Wikipedia integration for POI descriptions
+      - Over 10 million POIs worldwide
+      - Dedicated support
+    limits:
+      - requests_per_day: 500000
+      - requests_per_second: 100
+  - name: Enterprise
+    description: Custom high-volume plan for large-scale commercial deployments
+    price: custom
+    currency: USD
+    period: month
+    features:
+      - Commercial use permitted
+      - Access to all API endpoints
+      - Bulk data access and pre-fetching
+      - Custom SLA and support agreements
+      - Data caching and indexing rights
+      - Dedicated account management
+    limits:
+      - requests_per_day: unlimited
+      - requests_per_second: custom

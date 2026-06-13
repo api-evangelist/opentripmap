@@ -1,0 +1,52 @@
+name: OpenTripMap FinOps
+description: Financial operations guidance for managing OpenTripMap API costs
+url: https://dev.opentripmap.org/price
+guidance:
+  cost_model:
+    type: subscription
+    billing: monthly
+    currency: USD
+    notes: >
+      OpenTripMap uses a flat monthly subscription model rather than per-request
+      billing. Costs are predictable and fixed per billing cycle regardless of
+      actual request volume within plan limits.
+  plans_overview:
+    - name: Free
+      monthly_cost: 0
+      daily_request_limit: 5000
+      cost_per_request: 0
+      use_case: Prototyping, development, non-commercial personal projects
+    - name: Starter
+      monthly_cost: 19
+      daily_request_limit: 50000
+      cost_per_thousand_requests: 0.013
+      use_case: Small commercial apps, MVPs, low-traffic production services
+    - name: Pro
+      monthly_cost: 99
+      daily_request_limit: 500000
+      cost_per_thousand_requests: 0.0066
+      use_case: Mid-sized production applications, travel platforms
+    - name: Enterprise
+      monthly_cost: custom
+      daily_request_limit: unlimited
+      use_case: High-volume commercial deployments, data aggregation pipelines
+  cost_optimization:
+    - tip: Cache POI responses locally to reduce redundant API calls
+      impact: high
+      notes: ODbL license explicitly permits caching and pre-fetching of data
+    - tip: Use bounding box (bbox) queries instead of individual place lookups where possible
+      impact: medium
+      notes: Batch fetching reduces total request count for geographic area scans
+    - tip: Request only the language/fields you need to minimize processing overhead
+      impact: low
+      notes: Specify lang parameter to avoid defaulting to multi-language lookups
+    - tip: Monitor daily usage against plan limits to avoid service interruption
+      impact: high
+      notes: No automatic upgrade on limit breach; requests return 429 errors
+    - tip: Start with Free plan for development and upgrade only when moving to production
+      impact: high
+      notes: Free plan supports 5,000 requests/day which is sufficient for testing
+  billing_contact: support@opentripmap.com
+  payment_methods:
+    - PayPal
+    - Credit Card

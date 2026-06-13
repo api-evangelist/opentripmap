@@ -1,0 +1,84 @@
+aid: opentripmap
+name: OpenTripMap
+description: >
+  OpenTripMap provides a travel points of interest REST API with access to over
+  10 million POIs worldwide including attractions, restaurants, hotels, museums,
+  and natural features. The API integrates data from OpenStreetMap, Wikidata,
+  Wikipedia, and government cultural and environmental registries to deliver rich
+  POI details with descriptions, coordinates, categorization, and Wikipedia links
+  across more than 150 attraction types. Developers can query by bounding box,
+  radius, name, category, and rating, with responses available in JSON and GeoJSON
+  formats. Licensed under the Open Data Commons Open Database License (ODbL),
+  which permits caching, indexing, and redistribution of data.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/opentripmap/refs/heads/main/apis.yml
+created: '2026-06-13'
+modified: '2026-06-13'
+specificationVersion: '0.19'
+tags:
+  - Travel
+  - Points of Interest
+  - POI
+  - Tourism
+  - Maps
+  - Geospatial
+  - OpenStreetMap
+  - Wikipedia
+  - Attractions
+  - Restaurants
+  - Hotels
+  - Museums
+  - REST API
+apis:
+  - aid: opentripmap:opentripmap-api
+    name: OpenTripMap API
+    description: >
+      REST API providing access to over 10 million tourist attractions and points
+      of interest worldwide. Supports place list queries by bounding box, radius,
+      name, category, and rating; place detail lookups by unique xid identifier;
+      autosuggest for partial search terms; and geographic coordinate lookups for
+      place names. Responses include coordinates, categories, ratings, descriptions,
+      Wikipedia URLs, and OpenStreetMap identifiers.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://dev.opentripmap.org/product
+    baseURL: https://api.opentripmap.com/0.1
+    tags:
+      - Travel
+      - Points of Interest
+      - Tourism
+      - Geospatial
+      - Maps
+    properties:
+      - type: Documentation
+        url: https://dev.opentripmap.org/docs
+      - type: OpenAPI
+        url: https://dev.opentripmap.org/docs
+      - type: Pricing
+        url: https://dev.opentripmap.org/price
+common:
+  - type: Website
+    url: https://opentripmap.com/en/
+  - type: Documentation
+    url: https://dev.opentripmap.org/docs
+  - type: GitHubOrg
+    url: https://github.com/opentripmap
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/opentripmap
+  - type: Blog
+    url: https://opentripmap.com/en/
+  - type: Pricing
+    url: https://dev.opentripmap.org/price
+  - type: StatusPage
+    url: https://dev.opentripmap.org/
+  - type: X
+    url: https://twitter.com/hashtag/opentripmap
+  - type: Plans
+    url: plans/opentripmap-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/opentripmap-rate-limits.yml
+  - type: FinOps
+    url: finops/opentripmap-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

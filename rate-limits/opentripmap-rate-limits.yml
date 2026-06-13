@@ -1,0 +1,33 @@
+name: OpenTripMap Rate Limits
+description: Rate limiting policies for the OpenTripMap Points of Interest API
+url: https://dev.opentripmap.org/price
+rate_limits:
+  - plan: Free
+    requests_per_day: 5000
+    requests_per_second: 10
+    notes: Non-commercial use only; API key required; throttle requests to avoid 429 errors
+  - plan: Starter
+    requests_per_day: 50000
+    requests_per_second: 25
+    notes: Commercial use permitted; API key required via query parameter
+  - plan: Pro
+    requests_per_day: 500000
+    requests_per_second: 100
+    notes: Commercial use permitted; suitable for production workloads
+  - plan: Enterprise
+    requests_per_day: unlimited
+    requests_per_second: custom
+    notes: Contact support@opentripmap.com for custom rate limit configuration
+policies:
+  - name: API Key Authentication
+    description: All requests must include a valid API key as a query parameter (apikey=YOUR_KEY)
+    enforcement: All plans
+  - name: Rate Limit Exceeded
+    description: Requests exceeding rate limits will receive HTTP 429 Too Many Requests responses
+    enforcement: All plans
+  - name: Caching Permitted
+    description: Under ODbL license, consumers may pre-fetch, cache, and index data
+    enforcement: All plans
+  - name: Fair Use
+    description: Automated bulk scraping beyond plan limits is prohibited without an Enterprise agreement
+    enforcement: All plans
