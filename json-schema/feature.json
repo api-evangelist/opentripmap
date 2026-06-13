@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/opentripmap/refs/heads/main/json-schema/feature.json",
+  "title": "Feature",
+  "type": "object",
+  "description": "Feature",
+  "externalDocs": {
+    "url": "http://geojson.org/geojson-spec.html#feature-objects",
+    "description": "The GeoJSON Format specification"
+  },
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "Feature"
+      ],
+      "description": "Feature"
+    },
+    "id": {
+      "type": "string"
+    },
+    "geometry": {
+      "$ref": "#/components/schemas/Geometry"
+    },
+    "properties": {
+      "type": "object",
+      "properties": {
+        "properties": {
+          "type": "object",
+          "properties": {
+            "xid": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "kinds": {
+              "type": "string"
+            },
+            "osm": {
+              "type": "string"
+            },
+            "wikidata": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

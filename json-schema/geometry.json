@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/opentripmap/refs/heads/main/json-schema/geometry.json",
+  "title": "Geometry",
+  "type": "object",
+  "description": "GeoJSON geometry",
+  "externalDocs": {
+    "url": "http://geojson.org/geojson-spec.html#geometry-objects",
+    "description": "The GeoJSON Format specification"
+  },
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "Point"
+      ],
+      "description": "Point"
+    },
+    "coordinates": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}

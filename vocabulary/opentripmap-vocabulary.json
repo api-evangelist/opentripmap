@@ -1,0 +1,110 @@
+{
+  "vocabulary": "OpenTripMap API Vocabulary",
+  "version": "0.0.1",
+  "description": "Key terms and concepts used throughout the OpenTripMap API",
+  "source": "https://dev.opentripmap.org/docs",
+  "terms": [
+    {
+      "term": "xid",
+      "definition": "Unique identifier of an object in OpenTripMap, typically prefixed with a source indicator (N for OpenStreetMap nodes, W for ways, R for relations).",
+      "type": "identifier",
+      "example": "N6274014481"
+    },
+    {
+      "term": "kinds",
+      "definition": "Comma-separated list of hierarchical category tags classifying the type of point of interest. Over 150 categories are supported.",
+      "type": "classification",
+      "example": "architecture,towers,interesting_places,tourist_facilities",
+      "reference": "https://dev.opentripmap.org/catalog"
+    },
+    {
+      "term": "rate",
+      "definition": "Popularity/importance rating of a POI on a scale where higher values indicate more notable places. Values: 1 (low), 2, 3 (medium), 4, 5, 6, 7 (high, UNESCO/top attractions).",
+      "type": "rating",
+      "values": ["1", "2", "3", "4", "5", "6", "7"]
+    },
+    {
+      "term": "lang",
+      "definition": "ISO 639-1 two-letter language code specifying the language for returned descriptions and names.",
+      "type": "parameter",
+      "example": "en"
+    },
+    {
+      "term": "bbox",
+      "definition": "Bounding box defined by minimum and maximum longitude/latitude coordinates used to spatially filter POI results.",
+      "type": "geospatial",
+      "fields": ["lon_min", "lon_max", "lat_min", "lat_max"]
+    },
+    {
+      "term": "radius",
+      "definition": "Search radius in meters from a given center point (lon/lat) used to filter nearby POIs.",
+      "type": "geospatial",
+      "unit": "meters"
+    },
+    {
+      "term": "src_geom",
+      "definition": "Filter results by geometry source. Accepted values include 'osm' (OpenStreetMap), 'wikidata', and others.",
+      "type": "filter",
+      "example": "osm"
+    },
+    {
+      "term": "src_attr",
+      "definition": "Filter results by attribute source, specifying which data sources must provide attributes for the returned objects.",
+      "type": "filter",
+      "example": "wikidata,wikipedia"
+    },
+    {
+      "term": "format",
+      "definition": "Response format selector. Use 'json' for a JSON array of SimpleFeature objects or 'geojson' for a GeoJSON FeatureCollection.",
+      "type": "parameter",
+      "values": ["json", "geojson"]
+    },
+    {
+      "term": "otm",
+      "definition": "The canonical OpenTripMap URL for a place's detail page.",
+      "type": "url",
+      "example": "https://opentripmap.com/en/card/N6274014481"
+    },
+    {
+      "term": "osm",
+      "definition": "OpenStreetMap identifier for the object, linking to the corresponding OSM element.",
+      "type": "identifier",
+      "example": "node/6274014481"
+    },
+    {
+      "term": "wikidata",
+      "definition": "Wikidata entity identifier (Q-number) linking the POI to structured data in Wikidata.",
+      "type": "identifier",
+      "example": "Q243"
+    },
+    {
+      "term": "point",
+      "definition": "Geographic coordinates object with 'lon' (longitude) and 'lat' (latitude) fields representing the location of a POI.",
+      "type": "geospatial",
+      "fields": ["lon", "lat"]
+    },
+    {
+      "term": "wikipedia_extracts",
+      "definition": "Object containing a Wikipedia summary for the POI including plain text and HTML versions of the excerpt.",
+      "type": "content",
+      "fields": ["title", "text", "html"]
+    },
+    {
+      "term": "preview",
+      "definition": "Object containing a thumbnail image URL with width and height for display in list views.",
+      "type": "media",
+      "fields": ["source", "height", "width"]
+    },
+    {
+      "term": "highlighted_name",
+      "definition": "In autosuggest responses, the matched name with the search term highlighted using HTML bold tags.",
+      "type": "display",
+      "example": "<b>Eiffel</b> Tower"
+    },
+    {
+      "term": "geoname",
+      "definition": "Geographic location resolved from a place name, returning coordinates and country information useful as a search center point.",
+      "type": "resource"
+    }
+  ]
+}

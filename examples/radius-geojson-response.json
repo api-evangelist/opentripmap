@@ -1,0 +1,37 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "N6274014481",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [2.29448, 48.85837]
+      },
+      "properties": {
+        "xid": "N6274014481",
+        "name": "Eiffel Tower",
+        "kinds": "architecture,towers,interesting_places",
+        "rate": "7",
+        "osm": "node/6274014481",
+        "wikidata": "Q243"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "N2989471488",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [2.30076, 48.86001]
+      },
+      "properties": {
+        "xid": "N2989471488",
+        "name": "Champ de Mars",
+        "kinds": "natural,parks,interesting_places",
+        "rate": "3",
+        "osm": "node/2989471488",
+        "wikidata": "Q209538"
+      }
+    }
+  ]
+}

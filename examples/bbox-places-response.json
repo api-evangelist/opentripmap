@@ -1,0 +1,26 @@
+[
+  {
+    "xid": "N6274014481",
+    "name": "Eiffel Tower",
+    "kinds": "architecture,towers,interesting_places,tourist_facilities",
+    "osm": "node/6274014481",
+    "wikidata": "Q243",
+    "rate": "7",
+    "point": {
+      "lon": 2.29448,
+      "lat": 48.85837
+    }
+  },
+  {
+    "xid": "W5013364",
+    "name": "Louvre Museum",
+    "kinds": "museums,interesting_places,cultural",
+    "osm": "way/5013364",
+    "wikidata": "Q19675",
+    "rate": "7",
+    "point": {
+      "lon": 2.33783,
+      "lat": 48.86078
+    }
+  }
+]

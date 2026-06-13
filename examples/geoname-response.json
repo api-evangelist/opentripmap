@@ -1,0 +1,9 @@
+{
+  "name": "Paris",
+  "country": "FR",
+  "lon": 2.3488,
+  "lat": 48.8534,
+  "timezone": "Europe/Paris",
+  "population": 2138551,
+  "status": "ok"
+}

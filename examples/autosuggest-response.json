@@ -1,0 +1,22 @@
+[
+  {
+    "xid": "N6274014481",
+    "name": "Eiffel Tower",
+    "highlighted_name": "<b>Eiffel</b> Tower",
+    "kinds": "architecture,towers,interesting_places",
+    "point": {
+      "lon": 2.29448,
+      "lat": 48.85837
+    }
+  },
+  {
+    "xid": "W305023984",
+    "name": "Eiffel Tower Area",
+    "highlighted_name": "<b>Eiffel</b> Tower Area",
+    "kinds": "natural,parks",
+    "point": {
+      "lon": 2.29376,
+      "lat": 48.85629
+    }
+  }
+]

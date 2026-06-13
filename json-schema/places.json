@@ -1,0 +1,233 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/opentripmap/refs/heads/main/json-schema/places.json",
+  "title": "Places",
+  "type": "object",
+  "required": [
+    "xid",
+    "name",
+    "kind",
+    "sources",
+    "otm",
+    "rate",
+    "point"
+  ],
+  "properties": {
+    "xid": {
+      "description": "Unique identifier of the object in OpenTripMap",
+      "type": "string"
+    },
+    "name": {
+      "description": "The name of the object",
+      "type": "string"
+    },
+    "kinds": {
+      "description": "Comma-separated list of categories. [see List of categories](https://dev.opentripmap.com/en/catalog.tree.json)",
+      "type": "string"
+    },
+    "osm": {
+      "description": "OpenStreetMap identifier of the object",
+      "type": "string"
+    },
+    "wikidata": {
+      "description": "Wikidata identifier of the object",
+      "type": "string"
+    },
+    "rate": {
+      "description": "Rating of the object popularity",
+      "type": "string",
+      "enum": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "1h",
+        "2h",
+        "3h"
+      ]
+    },
+    "image": {
+      "description": "Image URL",
+      "type": "string"
+    },
+    "preview": {
+      "type": "object",
+      "description": "Image thumbnail",
+      "properties": {
+        "source": {
+          "type": "string",
+          "description": "Image thumbnail URL"
+        },
+        "width": {
+          "type": "integer",
+          "description": "Thumbnail width in pixels"
+        },
+        "height": {
+          "type": "integer",
+          "description": "Thumbnail height in pixels"
+        }
+      }
+    },
+    "wikipedia": {
+      "description": "Link to Wikipedia",
+      "type": "string"
+    },
+    "wikipedia_extracts": {
+      "type": "object",
+      "description": "Extracts of the wikipedia page",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Page title in wikipedia"
+        },
+        "text": {
+          "type": "string",
+          "description": "Plain-text extract"
+        },
+        "html": {
+          "type": "string",
+          "description": "Limited HTML extract"
+        }
+      }
+    },
+    "voyage": {
+      "description": "Link to WikiVoyage",
+      "type": "string"
+    },
+    "url": {
+      "description": "Link to website",
+      "type": "string"
+    },
+    "otm": {
+      "type": "string",
+      "description": "Link to object at opentripmap.com"
+    },
+    "sources": {
+      "type": "object",
+      "description": "Sources of information on object",
+      "properties": {
+        "geometry": {
+          "type": "string",
+          "enum": [
+            "osm",
+            "wikidata",
+            "snow",
+            "cultura.ru",
+            "rosnedra"
+          ],
+          "description": "Source of object geometry"
+        },
+        "attributes": {
+          "type": "array",
+          "description": "Sources of object attributes",
+          "items": {
+            "type": "string",
+            "enum": [
+              "osm",
+              "wikidata",
+              "snow",
+              "cultura.ru",
+              "rosnedra",
+              "user"
+            ]
+          }
+        }
+      }
+    },
+    "info": {
+      "type": "object",
+      "description": "Extended object information (for some object categories)",
+      "properties": {
+        "src": {
+          "type": "string",
+          "format": "int64",
+          "description": "Source ID"
+        },
+        "src_id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Object identifier in the source"
+        },
+        "descr": {
+          "type": "string",
+          "description": "Object description"
+        }
+      }
+    },
+    "bbox": {
+      "type": "object",
+      "description": "Minimum bounding box for the object geometry",
+      "properties": {
+        "lon_min": {
+          "type": "number",
+          "format": "double"
+        },
+        "lon_max": {
+          "type": "number",
+          "format": "double"
+        },
+        "lat_min": {
+          "type": "number",
+          "format": "double"
+        },
+        "lat_max": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "point": {
+      "type": "object",
+      "description": "Point geographic coordinates of the object",
+      "properties": {
+        "lon": {
+          "description": "Longitude",
+          "type": "number",
+          "format": "double"
+        },
+        "lat": {
+          "description": "Latitude",
+          "type": "number",
+          "format": "double"
+        }
+      }
+    }
+  },
+  "example": {
+    "kinds": "architecture,towers,interesting_places,bell_towers",
+    "sources": {
+      "geometry": "osm",
+      "attributes": [
+        "osm",
+        "user",
+        "wikidata"
+      ]
+    },
+    "bbox": {
+      "lat_max": 59.857355,
+      "lat_min": 59.857242,
+      "lon_max": 38.366282,
+      "lon_min": 38.366043
+    },
+    "point": {
+      "lon": 38.366169,
+      "lat": 59.857269
+    },
+    "osm": "way/286786280",
+    "otm": "https://opentripmap.com/ru/card/W286786280",
+    "xid": "W286786280",
+    "name": "Bellfry",
+    "wikipedia": "https://ru.wikipedia.org/wiki/\u041a\u043e\u043b\u043e\u043a\u043e\u043b\u044c\u043d\u044f_(\u041a\u0438\u0440\u0438\u043b\u043b\u043e-\u0411\u0435\u043b\u043e\u0437\u0435\u0440\u0441\u043a\u0438\u0439_\u043c\u043e\u043d\u0430\u0441\u0442\u044b\u0440\u044c)",
+    "image": "https://data.opentripmap.com/images/user/Kirillo-Belozersky Belltower.jpg/original.jpg",
+    "wikidata": "Q4228276",
+    "rate": "3h",
+    "info": {
+      "descr": "\u041a\u043e\u043b\u043e\u043a\u043e\u043b\u044c\u043d\u044f \u043f\u043e\u0441\u0442\u0440\u043e\u0435\u043d\u0430 \u0432\u043e \u0432\u0442\u043e\u0440\u043e\u0439 \u043f\u043e\u043b\u043e\u0432\u0438\u043d\u0435 XVIII \u0432\u0435\u043a\u0430. \u042d\u0442\u043e \u043e\u0434\u043d\u043e \u0438\u0437 \u0441\u0430\u043c\u044b\u0445 \u0432\u044b\u0441\u043e\u043a\u0438\u0445 \u0441\u043e\u043e\u0440\u0443\u0436\u0435\u043d\u0438\u0439 \u043c\u043e\u043d\u0430\u0441\u0442\u044b\u0440\u044f. \u041a\u043e\u043b\u043e\u043a\u043e\u043b\u044c\u043d\u044f \u0441\u043e\u0441\u0442\u043e\u0438\u0442 \u0438\u0437 4 \u0433\u043b\u0443\u0445\u0438\u0445 \u044d\u0442\u0430\u0436\u0435\u0439, \u043d\u0430\u0434 \u043a\u043e\u0442\u043e\u0440\u044b\u043c\u0438 \u0432\u043e\u0437\u0432\u044b\u0448\u0430\u0435\u0442\u0441\u044f \u043e\u0434\u0438\u043d \u043e\u0442\u043a\u0440\u044b\u0442\u044b\u0439. \u0412 XVIII \u0432\u0435\u043a\u0435 \u043d\u0430 \u043a\u043e\u043b\u043e\u043a\u043e\u043b\u044c\u043d\u0435 \u0431\u044b\u043b\u043e 26 \u043a\u043e\u043b\u043e\u043a\u043e\u043b\u043e\u0432, \u0441\u0430\u043c\u044b\u0439 \u0431\u043e\u043b\u044c\u0448\u043e\u0439\u0438\u0437 \u043d\u0438\u0445 \u0432\u0435\u0441\u0438\u043b \u043e\u043a\u043e\u043b\u043e 20 \u0442\u043e\u043d\u043d, \u043f\u043e\u043b\u0443\u0447\u0438\u0432\u0448\u0438\u0439 \u0438\u043c\u044f \u00ab\u041c\u043e\u0442\u043e\u0440\u0430\u00bb. \u0415\u0433\u043e \u0437\u0432\u043e\u043d \u0431\u044b\u043b \u0441\u043b\u044b\u0448\u0435\u043d \u0432 \u0440\u0430\u0434\u0438\u0443\u0441\u0435 20 \u043a\u0438\u043b\u043e\u043c\u0435\u0442\u0440\u043e\u0432.\u041a \u0441\u043e\u0436\u0430\u043b\u0435\u043d\u0438\u044e,  \u0432 \u043d\u0430\u0441\u0442\u043e\u044f\u0449\u0435\u0435 \u0432\u0440\u0435\u043c\u044f \u043d\u0430 \u043a\u043e\u043b\u043e\u043a\u043e\u043b\u044c\u043d\u0435 \u043d\u0435\u0442 \u043a\u043e\u043b\u043e\u043a\u043e\u043b\u043e\u0432: \u0438\u0445 \u043d\u0430\u0447\u0430\u043b\u0438 \u0441\u043d\u0438\u043c\u0430\u0442\u044c \u043f\u0440\u0438 \u041f\u0435\u0442\u0440\u0435 I, \u043a\u043e\u0433\u0434\u0430 \u0432\u043e \u0432\u0440\u0435\u043c\u044f \u0421\u0435\u0432\u0435\u0440\u043d\u043e\u0439 \u0432\u043e\u0439\u043d\u044b \u0447\u0435\u0442\u0432\u0451\u0440\u0442\u0430\u044f \u0447\u0430\u0441\u0442\u044c \u043c\u043e\u043d\u0430\u0441\u0442\u044b\u0440\u0441\u043a\u0438\u0445 \u043a\u043e\u043b\u043e\u043a\u043e\u043b\u043e\u0432 (\u043e\u0431\u0449\u0438\u043c \u0432\u0435\u0441\u043e\u043c \u043e\u043a\u043e\u043b\u043e 6,5 \u0442\u043e\u043d\u043d) \u043f\u043e\u0448\u043b\u0430 \u043d\u0430 \u043f\u043e\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u0435 \u0441\u043d\u0430\u0440\u044f\u0436\u0435\u043d\u0438\u044f \u0430\u0440\u043c\u0438\u0438. \u0410 \u0432 \u0433\u043e\u0434\u044b  \u0441\u043e\u0432\u0435\u0442\u0441\u043a\u043e\u0439 \u0432\u043b\u0430\u0441\u0442\u0438 \u043f\u043e\u0447\u0442\u0438 \u0432\u0441\u0451 \u0441\u043e\u0431\u0440\u0430\u043d\u0438\u0435 \u043c\u043e\u043d\u0430\u0441\u0442\u044b\u0440\u0441\u043a\u0438\u0445 \u0437\u0432\u043e\u043d\u043e\u0432 \u0431\u044b\u043b\u043e \u0443\u043d\u0438\u0447\u0442\u043e\u0436\u0435\u043d\u043e.  \u0412 1930 \u2013 1931 \u0433\u043e\u0434\u0430\u0445 \u0438\u0437 \u043c\u043e\u043d\u0430\u0441\u0442\u044b\u0440\u044f \u0431\u044b\u043b\u043e \u0432\u044b\u0432\u0435\u0437\u0435\u043d\u043e \u0441\u0432\u044b\u0448\u0435 31 \u0442\u043e\u043d\u043d\u044b \u043a\u043e\u043b\u043e\u043a\u043e\u043b\u044c\u043d\u043e\u0439 \u0431\u0440\u043e\u043d\u0437\u044b.\n\u0412 2006-2007 \u0433\u043e\u0434\u0430\u0445\u043f\u0440\u043e\u0432\u0435\u0434\u0435\u043d\u044b \u0440\u0435\u0441\u0442\u0430\u0432\u0440\u0430\u0446\u0438\u043e\u043d\u043d\u044b\u0435 \u0440\u0430\u0431\u043e\u0442\u044b. \u0412 \u043d\u0430\u0441\u0442\u043e\u044f\u0449\u0435\u0435 \u0432\u0440\u0435\u043c\u044f \u043d\u0430 3\u20134 \u044f\u0440\u0443\u0441\u0430\u0445 \u043d\u0430\u0445\u043e\u0434\u0438\u0442\u0441\u044f \u0432\u044b\u0441\u0442\u0430\u0432\u043a\u0430 \u00ab\u041a\u043e\u043b\u043e\u043a\u043e\u043b\u044c\u043d\u044b\u0439 \u043c\u0438\u0440\u00bb, \u0437\u0434\u0435\u0441\u044c \u044d\u043a\u0441\u043f\u043e\u043d\u0438\u0440\u0443\u044e\u0442\u0441\u044f\u043c\u0443\u0437\u0435\u0439\u043d\u043e\u0435 \u0441\u043e\u0431\u0440\u0430\u043d\u0438\u0435 \u043a\u043e\u043b\u043e\u043a\u043e\u043b\u043e\u0432 \u0438 \u043c\u0435\u0445\u0430\u043d\u0438\u0437\u043c \u0431\u043e\u0435\u0432\u044b\u0445 \u0447\u0430\u0441\u043e\u0432\u043d\u0430 \u0447\u0435\u0442\u0432\u0435\u0440\u0442\u043e\u043c \u044f\u0440\u0443\u0441\u0435 \u043a\u043e\u043b\u043e\u043a\u043e\u043b\u044c\u043d\u0438, \u0430 \u044f\u0440\u0443\u0441 \u0437\u0432\u043e\u043d\u0430 \u0432 \u043b\u0435\u0442\u043d\u0438\u0439 \u043f\u0435\u0440\u0438\u043e\u0434 \u043e\u0442\u043a\u0440\u044b\u0442 \u0434\u043b\u044f \u043f\u043e\u0441\u0435\u0449\u0435\u043d\u0438\u044f. \u041d\u0430 \u043a\u043e\u043b\u043e\u043a\u043e\u043b\u044c\u043d\u0435 \u0440\u0430\u0431\u043e\u0442\u0430\u0435\u0442 Web-\u043a\u0430\u043c\u0435\u0440\u0430, \u0447\u0435\u0440\u0435\u0437 \u043a\u043e\u0442\u043e\u0440\u0443\u044e \u043c\u043e\u0436\u043d\u043e \u043f\u043e\u043b\u044e\u0431\u043e\u0432\u0430\u0442\u044c\u0441\u044f \u0432\u0438\u0434\u043e\u043c \u043d\u0430 \u0421\u043e\u0431\u043e\u0440\u043d\u0443\u044e \u043f\u043b\u043e\u0449\u0430\u0434\u044c \u0432 \u043b\u044e\u0431\u043e\u0435 \u0432\u0440\u0435\u043c\u044f \u0434\u043d\u044f \u0438 \u043d\u043e\u0447\u0438.",
+      "image": "1 (1) (Large)",
+      "img_width": 1620,
+      "src": "belozersk",
+      "src_id": 13,
+      "img_height": 1080
+    }
+  }
+}

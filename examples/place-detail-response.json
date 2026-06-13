@@ -1,0 +1,43 @@
+{
+  "xid": "N6274014481",
+  "name": "Eiffel Tower",
+  "kinds": "architecture,towers,interesting_places,tourist_facilities",
+  "osm": "node/6274014481",
+  "wikidata": "Q243",
+  "rate": "7",
+  "otm": "https://opentripmap.com/en/card/N6274014481",
+  "sources": {
+    "geometry": "osm",
+    "attributes": ["wikidata", "wikipedia"]
+  },
+  "point": {
+    "lon": 2.29448,
+    "lat": 48.85837
+  },
+  "bbox": {
+    "lon_min": 2.29131,
+    "lon_max": 2.29767,
+    "lat_min": 48.85547,
+    "lat_max": 48.86018
+  },
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Camponotus_flavomarginatus_ant.jpg/320px-Camponotus_flavomarginatus_ant.jpg",
+  "preview": {
+    "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Eiffel_Tower_Flickr.jpg/400px-Eiffel_Tower_Flickr.jpg",
+    "height": 400,
+    "width": 266
+  },
+  "wikipedia_extracts": {
+    "title": "Eiffel Tower",
+    "text": "The Eiffel Tower is a wrought-iron lattice tower on the Champ de Mars in Paris, France. It is named after the engineer Gustave Eiffel, whose company designed and built the tower from 1887 to 1889.",
+    "html": "<p>The Eiffel Tower is a wrought-iron lattice tower on the Champ de Mars in Paris, France.</p>"
+  },
+  "url": "https://en.wikipedia.org/wiki/Eiffel_Tower",
+  "address": {
+    "country": "France",
+    "country_code": "fr",
+    "county": "Paris",
+    "city": "Paris",
+    "postcode": "75007",
+    "road": "Avenue Gustave Eiffel"
+  }
+}

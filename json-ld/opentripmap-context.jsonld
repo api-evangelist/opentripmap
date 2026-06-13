@@ -1,0 +1,51 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "otm": "https://dev.opentripmap.org/vocab#",
+    "osm": "https://www.openstreetmap.org/",
+    "wikidata": "https://www.wikidata.org/wiki/",
+    "geojson": "https://purl.org/geojson/vocab#",
+    "xid": "otm:xid",
+    "kinds": "otm:kinds",
+    "rate": "otm:rate",
+    "otm_url": "otm:url",
+    "point": {
+      "@id": "schema:GeoCoordinates",
+      "@type": "schema:GeoCoordinates"
+    },
+    "lon": "schema:longitude",
+    "lat": "schema:latitude",
+    "bbox": {
+      "@id": "otm:bbox",
+      "@type": "otm:BoundingBox"
+    },
+    "lon_min": "otm:lon_min",
+    "lon_max": "otm:lon_max",
+    "lat_min": "otm:lat_min",
+    "lat_max": "otm:lat_max",
+    "name": "schema:name",
+    "image": "schema:image",
+    "preview": {
+      "@id": "schema:thumbnailUrl",
+      "@type": "schema:ImageObject"
+    },
+    "wikipedia_extracts": {
+      "@id": "otm:wikipediaExtracts",
+      "@type": "otm:WikipediaExtracts"
+    },
+    "address": {
+      "@id": "schema:address",
+      "@type": "schema:PostalAddress"
+    },
+    "country": "schema:addressCountry",
+    "country_code": "schema:addressCountry",
+    "city": "schema:addressLocality",
+    "postcode": "schema:postalCode",
+    "road": "schema:streetAddress",
+    "sources": "otm:sources",
+    "highlighted_name": "otm:highlightedName",
+    "timezone": "schema:Time",
+    "population": "schema:population",
+    "url": "schema:url"
+  }
+}

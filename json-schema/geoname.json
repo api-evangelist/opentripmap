@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/opentripmap/refs/heads/main/json-schema/geoname.json",
+  "title": "Geoname",
+  "required": [
+    "name",
+    "country",
+    "lon",
+    "lat"
+  ],
+  "type": "object",
+  "properties": {
+    "name": {
+      "description": "The name of the place",
+      "type": "string"
+    },
+    "country": {
+      "description": "ISO-3166 2-letter country code",
+      "type": "string"
+    },
+    "lon": {
+      "description": "Longitude",
+      "type": "number",
+      "format": "double"
+    },
+    "lat": {
+      "description": "Latitude",
+      "type": "number",
+      "format": "double"
+    },
+    "timezone": {
+      "description": "The iana timezone id",
+      "type": "string"
+    },
+    "population": {
+      "description": "Population count",
+      "type": "integer"
+    },
+    "partial_match": {
+      "description": "A sign that the method did not return an exact match for the requested name",
+      "type": "boolean"
+    }
+  },
+  "example": {
+    "country": "RU",
+    "timezone": "Europe/Moscow",
+    "name": "Moscow",
+    "lon": 37.61556,
+    "lat": 55.75222,
+    "population": 10381222
+  }
+}
