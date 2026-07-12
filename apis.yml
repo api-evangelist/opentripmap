@@ -57,6 +57,10 @@ apis:
       - type: Pricing
         url: https://dev.opentripmap.org/price
 common:
+  - type: DomainSecurity
+    url: security/opentripmap-domain-security.yml
+  - type: Authentication
+    url: authentication/opentripmap-authentication.yml
   - type: Website
     url: https://opentripmap.com/en/
   - type: Documentation
