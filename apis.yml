@@ -57,6 +57,8 @@ apis:
       - type: Pricing
         url: https://dev.opentripmap.org/price
 common:
+  - type: AgenticAccess
+    url: agentic-access/opentripmap-agentic-access.yml
   - type: DomainSecurity
     url: security/opentripmap-domain-security.yml
   - type: Authentication
