@@ -1,0 +1,92 @@
+openapi: 3.0.0
+info:
+  title: OpenTripMap Geographic coordinates of populated place API
+  version: 0.0.1
+  description: "Object types are [hierarchically structured](https://dev.opentripmap.org/catalog). \n\nThe return data depend on the requested language. If the object does not contain information in the required language, the data is returned in English or in another available language.\n \n  ## API Requests\n\n * Request for detailed information about a specific object.\n \n   Example: http://api.opentripmap.com/0.1/ru/places/xid/Q372040?apikey=xxxxx - request by the object with ID Q372040.\n   \n \n * Request for a list of objects within the selected area.\n\n   Example: http://api.opentripmap.com/0.1/ru/places/bbox?lon_min=38.364285&lat_min=59.855685&lon_max=38.372809&lat_max=59.859052&kinds=churches&format=geojson&apikey=xxxxx -  request for the list of churches within the selected area.\n      \n \n All parameters are described below. Parameters are passed in the query string and separated by ampersands (&).\n\n \n"
+servers:
+- url: https://api.opentripmap.com/0.1
+- url: http://api.opentripmap.com/0.1
+tags:
+- name: Geographic coordinates of populated place
+paths:
+  /{lang}/places/geoname:
+    get:
+      security:
+      - ApiKeyAuth: []
+      description: Returns geographic coordinates for the given placename (region, city, village, etc.). The method returns the place whose name is most similar to the search string. Service based on GeoNames database.
+      operationId: getGeoname
+      tags:
+      - Geographic coordinates of populated place
+      parameters:
+      - name: lang
+        in: path
+        required: true
+        description: 'Two-letter language code (ISO639-1). The following values are available: en (english), ru (russian)'
+        schema:
+          type: string
+      - name: name
+        in: query
+        description: Placename
+        required: true
+        schema:
+          type: string
+      - name: country
+        in: query
+        description: Two-letter country code, ISO-3166 (optional). Default is all countries.
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Returns geographic coordinates
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Geoname'
+        '404':
+          description: Placename is not found
+components:
+  schemas:
+    Geoname:
+      required:
+      - name
+      - country
+      - lon
+      - lat
+      type: object
+      properties:
+        name:
+          description: The name of the place
+          type: string
+        country:
+          description: ISO-3166 2-letter country code
+          type: string
+        lon:
+          description: Longitude
+          type: number
+          format: double
+        lat:
+          description: Latitude
+          type: number
+          format: double
+        timezone:
+          description: The iana timezone id
+          type: string
+        population:
+          description: Population count
+          type: integer
+        partial_match:
+          description: A sign that the method did not return an exact match for the requested name
+          type: boolean
+      example:
+        country: RU
+        timezone: Europe/Moscow
+        name: Moscow
+        lon: 37.61556
+        lat: 55.75222
+        population: 10381222
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: apikey

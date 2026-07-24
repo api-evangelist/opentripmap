@@ -1,0 +1,227 @@
+openapi: 3.0.0
+info:
+  title: OpenTripMap Geographic coordinates of populated place Object properties API
+  version: 0.0.1
+  description: "Object types are [hierarchically structured](https://dev.opentripmap.org/catalog). \n\nThe return data depend on the requested language. If the object does not contain information in the required language, the data is returned in English or in another available language.\n \n  ## API Requests\n\n * Request for detailed information about a specific object.\n \n   Example: http://api.opentripmap.com/0.1/ru/places/xid/Q372040?apikey=xxxxx - request by the object with ID Q372040.\n   \n \n * Request for a list of objects within the selected area.\n\n   Example: http://api.opentripmap.com/0.1/ru/places/bbox?lon_min=38.364285&lat_min=59.855685&lon_max=38.372809&lat_max=59.859052&kinds=churches&format=geojson&apikey=xxxxx -  request for the list of churches within the selected area.\n      \n \n All parameters are described below. Parameters are passed in the query string and separated by ampersands (&).\n\n \n"
+servers:
+- url: https://api.opentripmap.com/0.1
+- url: http://api.opentripmap.com/0.1
+tags:
+- name: Object properties
+paths:
+  /{lang}/places/xid/{xid}:
+    get:
+      security:
+      - ApiKeyAuth: []
+      description: Returns detailed information about the object. Objects can contain different amount of information.
+      operationId: getPlaceByXid
+      tags:
+      - Object properties
+      parameters:
+      - name: lang
+        in: path
+        required: true
+        description: 'Two-letter language code (ISO639-1). The following values are available: en (english), ru (russian)'
+        schema:
+          type: string
+      - name: xid
+        in: path
+        description: Unique identifier of the object in OpenTripMap
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Returns object properties
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Places'
+        '404':
+          description: Object is not found in OpenTripMap
+components:
+  schemas:
+    Places:
+      type: object
+      required:
+      - xid
+      - name
+      - kind
+      - sources
+      - otm
+      - rate
+      - point
+      properties:
+        xid:
+          description: Unique identifier of the object in OpenTripMap
+          type: string
+        name:
+          description: The name of the object
+          type: string
+        kinds:
+          description: Comma-separated list of categories. [see List of categories](https://dev.opentripmap.com/en/catalog.tree.json)
+          type: string
+        osm:
+          description: OpenStreetMap identifier of the object
+          type: string
+        wikidata:
+          description: Wikidata identifier of the object
+          type: string
+        rate:
+          description: Rating of the object popularity
+          type: string
+          enum:
+          - '0'
+          - '1'
+          - '2'
+          - '3'
+          - 1h
+          - 2h
+          - 3h
+        image:
+          description: Image URL
+          type: string
+        preview:
+          type: object
+          description: Image thumbnail
+          properties:
+            source:
+              type: string
+              description: Image thumbnail URL
+            width:
+              type: integer
+              description: Thumbnail width in pixels
+            height:
+              type: integer
+              description: Thumbnail height in pixels
+        wikipedia:
+          description: Link to Wikipedia
+          type: string
+        wikipedia_extracts:
+          type: object
+          description: Extracts of the wikipedia page
+          properties:
+            title:
+              type: string
+              description: Page title in wikipedia
+            text:
+              type: string
+              description: Plain-text extract
+            html:
+              type: string
+              description: Limited HTML extract
+        voyage:
+          description: Link to WikiVoyage
+          type: string
+        url:
+          description: Link to website
+          type: string
+        otm:
+          type: string
+          description: Link to object at opentripmap.com
+        sources:
+          type: object
+          description: Sources of information on object
+          properties:
+            geometry:
+              type: string
+              enum:
+              - osm
+              - wikidata
+              - snow
+              - cultura.ru
+              - rosnedra
+              description: Source of object geometry
+            attributes:
+              type: array
+              description: Sources of object attributes
+              items:
+                type: string
+                enum:
+                - osm
+                - wikidata
+                - snow
+                - cultura.ru
+                - rosnedra
+                - user
+        info:
+          type: object
+          description: Extended object information (for some object categories)
+          properties:
+            src:
+              type: string
+              format: int64
+              description: Source ID
+            src_id:
+              type: integer
+              format: int64
+              description: Object identifier in the source
+            descr:
+              type: string
+              description: Object description
+        bbox:
+          type: object
+          description: Minimum bounding box for the object geometry
+          properties:
+            lon_min:
+              type: number
+              format: double
+            lon_max:
+              type: number
+              format: double
+            lat_min:
+              type: number
+              format: double
+            lat_max:
+              type: number
+              format: double
+        point:
+          type: object
+          description: Point geographic coordinates of the object
+          properties:
+            lon:
+              description: Longitude
+              type: number
+              format: double
+            lat:
+              description: Latitude
+              type: number
+              format: double
+      example:
+        kinds: architecture,towers,interesting_places,bell_towers
+        sources:
+          geometry: osm
+          attributes:
+          - osm
+          - user
+          - wikidata
+        bbox:
+          lat_max: 59.857355
+          lat_min: 59.857242
+          lon_max: 38.366282
+          lon_min: 38.366043
+        point:
+          lon: 38.366169
+          lat: 59.857269
+        osm: way/286786280
+        otm: https://opentripmap.com/ru/card/W286786280
+        xid: W286786280
+        name: Bellfry
+        wikipedia: https://ru.wikipedia.org/wiki/Колокольня_(Кирилло-Белозерский_монастырь)
+        image: https://data.opentripmap.com/images/user/Kirillo-Belozersky Belltower.jpg/original.jpg
+        wikidata: Q4228276
+        rate: 3h
+        info:
+          descr: 'Колокольня построена во второй половине XVIII века. Это одно из самых высоких сооружений монастыря. Колокольня состоит из 4 глухих этажей, над которыми возвышается один открытый. В XVIII веке на колокольне было 26 колоколов, самый большойиз них весил около 20 тонн, получивший имя «Мотора». Его звон был слышен в радиусе 20 километров.К сожалению,  в настоящее время на колокольне нет колоколов: их начали снимать при Петре I, когда во время Северной войны четвёртая часть монастырских колоколов (общим весом около 6,5 тонн) пошла на пополнение снаряжения армии. А в годы  советской власти почти всё собрание монастырских звонов было уничтожено.  В 1930 – 1931 годах из монастыря было вывезено свыше 31 тонны колокольной бронзы.
+
+            В 2006-2007 годахпроведены реставрационные работы. В настоящее время на 3–4 ярусах находится выставка «Колокольный мир», здесь экспонируютсямузейное собрание колоколов и механизм боевых часовна четвертом ярусе колокольни, а ярус звона в летний период открыт для посещения. На колокольне работает Web-камера, через которую можно полюбоваться видом на Соборную площадь в любое время дня и ночи.'
+          image: 1 (1) (Large)
+          img_width: 1620
+          src: belozersk
+          src_id: 13
+          img_height: 1080
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: apikey

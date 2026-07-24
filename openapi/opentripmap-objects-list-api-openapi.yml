@@ -1,0 +1,593 @@
+openapi: 3.0.0
+info:
+  title: OpenTripMap Geographic coordinates of populated place Objects list API
+  version: 0.0.1
+  description: "Object types are [hierarchically structured](https://dev.opentripmap.org/catalog). \n\nThe return data depend on the requested language. If the object does not contain information in the required language, the data is returned in English or in another available language.\n \n  ## API Requests\n\n * Request for detailed information about a specific object.\n \n   Example: http://api.opentripmap.com/0.1/ru/places/xid/Q372040?apikey=xxxxx - request by the object with ID Q372040.\n   \n \n * Request for a list of objects within the selected area.\n\n   Example: http://api.opentripmap.com/0.1/ru/places/bbox?lon_min=38.364285&lat_min=59.855685&lon_max=38.372809&lat_max=59.859052&kinds=churches&format=geojson&apikey=xxxxx -  request for the list of churches within the selected area.\n      \n \n All parameters are described below. Parameters are passed in the query string and separated by ampersands (&).\n\n \n"
+servers:
+- url: https://api.opentripmap.com/0.1
+- url: http://api.opentripmap.com/0.1
+tags:
+- name: Objects list
+paths:
+  /{lang}/places/bbox:
+    get:
+      security:
+      - ApiKeyAuth: []
+      description: 'Method returns all objects (or number of objects) in the given bounding box optionally filtered by parameters. Only basic information is include in response: xid, name, kinds, osm, wikidata and geometry of each object.
+
+        Depending on the chosen format, the response is either a simple array of objects (with a smaller volume) or an object in GeoJSON format.'
+      operationId: getListOfPlacesByLocation
+      externalDocs:
+        description: Object category hierarchy
+        url: https://dev.opentripmap.org/catalog
+      tags:
+      - Objects list
+      parameters:
+      - name: lang
+        in: path
+        description: 'Language code (2 characters, ISO639-1). The following values are available: en (english), ru (russian)'
+        required: true
+        schema:
+          type: string
+      - name: lon_min
+        description: Minimum longitude
+        required: true
+        in: query
+        schema:
+          type: number
+          format: double
+      - name: lon_max
+        description: Maximum longitude
+        required: true
+        in: query
+        schema:
+          type: number
+          format: double
+      - name: lat_min
+        description: Minimum latitude
+        required: true
+        in: query
+        schema:
+          type: number
+          format: double
+      - name: lat_max
+        description: Maximum latitude
+        required: true
+        in: query
+        schema:
+          type: number
+          format: double
+      - name: src_geom
+        description: 'The source of the object geometry.
+
+          Objects from all sources are returned by default.'
+        required: false
+        schema:
+          type: string
+          enum:
+          - osm
+          - wikidata
+          - snow
+          - cultura.ru
+          - rosnedra
+        in: query
+      - name: src_attr
+        description: 'The source of the object attributes.
+
+          It is allowed to point multiple sources separated by commas.
+
+          Objects from all sources are returned by default.'
+        required: false
+        schema:
+          type: string
+          enum:
+          - osm
+          - wikidata
+          - snow
+          - cultura.ru
+          - rosnedra
+          - user
+        in: query
+      - name: kinds
+        description: "Object category. Several comma-separated categories may be stated with OR logic. [see List of categories](https://dev.opentripmap.org/catalog). \nObjects from interesting_places category are returned by default"
+        required: false
+        schema:
+          type: string
+        in: query
+      - name: name
+        description: The text string on which to search at the begining of the object name (mimimum 3 characters). All objects are returned by default.
+        required: false
+        schema:
+          type: string
+        in: query
+      - name: rate
+        description: 'Minimum rating of the object popularity, 1 - minimum, 3- maximum, h - object is referred to the cultural heritage.
+
+          Objects from all ratings are returned by default.'
+        required: false
+        schema:
+          type: string
+          enum:
+          - '1'
+          - '2'
+          - '3'
+          - 1h
+          - 2h
+          - 3h
+        in: query
+      - name: format
+        description: The output format (GeoJSON  is set by default). Specify “count” to get the number of obtained objects
+        required: false
+        schema:
+          type: string
+          enum:
+          - json
+          - geojson
+          - count
+        in: query
+      - name: limit
+        description: 'MMaximum number of returned objects. 500 is set by default.
+
+          '
+        required: false
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Returns a list of objects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SimpleFeature'
+            application/geojson:
+              schema:
+                $ref: '#/components/schemas/FeatureCollection'
+        '400':
+          description: Error in query parameters
+  /{lang}/places/radius:
+    get:
+      security:
+      - ApiKeyAuth: []
+      description: 'Method returns objects closest to the selected point optionally filtered by parameters. Only basic information is include in response: xid, name, kinds, osm, wikidata and geometry of each object.
+
+        Depending on the chosen format, the response is either a simple array of objects (with a smaller volume) or an object in GeoJSON format.'
+      operationId: getListOfPlacesByRadius
+      externalDocs:
+        description: Object category hierarchy
+        url: https://dev.opentripmap.org/catalog
+      tags:
+      - Objects list
+      parameters:
+      - name: lang
+        in: path
+        description: 'Language code (2 characters, ISO639-1). The following values are available: en (english), ru (russian)'
+        required: true
+        schema:
+          type: string
+      - name: radius
+        description: Maximum distance from selected point in meters
+        required: true
+        in: query
+        schema:
+          type: number
+          format: double
+      - name: lon
+        description: Longitude of selected point
+        required: true
+        in: query
+        schema:
+          type: number
+          format: double
+      - name: lat
+        description: Latitude of selected point
+        required: true
+        in: query
+        schema:
+          type: number
+          format: double
+      - name: src_geom
+        description: 'The source of the object geometry.
+
+          Objects from all sources are returned by default.'
+        required: false
+        schema:
+          type: string
+          enum:
+          - osm
+          - wikidata
+          - snow
+          - cultura.ru
+          - rosnedra
+        in: query
+      - name: src_attr
+        description: 'The source of the object attributes.
+
+          It is allowed to point multiple sources separated by commas.
+
+          Objects from all sources are returned by default.'
+        required: false
+        schema:
+          type: string
+          enum:
+          - osm
+          - wikidata
+          - snow
+          - cultura.ru
+          - rosnedra
+          - user
+        in: query
+      - name: kinds
+        description: "Object category. Several comma-separated categories may be stated with OR logic. [see List of categories](https://dev.opentripmap.org/catalog). \nObjects from interesting_places category are returned by default."
+        required: false
+        schema:
+          type: string
+        in: query
+      - name: name
+        description: The text string on which to search at the begining of the object name (mimimum 3 characters). All objects are returned by default.
+        required: false
+        schema:
+          type: string
+        in: query
+      - name: rate
+        description: 'Minimum rating of the object popularity, 1 - minimum, 3- maximum, h - object is referred to the cultural heritage.
+
+          Objects from all ratings are returned by default.'
+        required: false
+        schema:
+          type: string
+          enum:
+          - '1'
+          - '2'
+          - '3'
+          - 1h
+          - 2h
+          - 3h
+        in: query
+      - name: format
+        description: The output format (GeoJSON  is set by default). Specify “count” to get the number of obtained objects
+        required: false
+        schema:
+          type: string
+          enum:
+          - json
+          - geojson
+          - count
+        in: query
+      - name: limit
+        description: 'Maximum number of returned objects. 500 is set by default.
+
+          '
+        required: false
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Returns a list of objects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SimpleFeature'
+            application/geojson:
+              schema:
+                $ref: '#/components/schemas/FeatureCollection'
+        '400':
+          description: Error in query parameters
+  /{lang}/places/autosuggest:
+    get:
+      security:
+      - ApiKeyAuth: []
+      description: 'Method returns suggestions for search term closest to the selected point optionally filtered by parameters. Only basic information is include in response: xid, name, kinds, osm, wikidata of each object. Depending on the chosen format, the response is either a simple array of objects (with a smaller volume) or an object in GeoJSON format.'
+      operationId: getListOfPlacesBySuggestions
+      externalDocs:
+        description: Object category hierarchy
+        url: https://dev.opentripmap.org/catalog
+      tags:
+      - Objects list
+      parameters:
+      - name: lang
+        in: path
+        description: 'Language code (2 characters, ISO639-1). The following values are available: en (english), ru (russian)'
+        required: true
+        schema:
+          type: string
+      - name: name
+        in: query
+        description: The query term on which to search. The minimum number of characters for name is 3
+        required: true
+        schema:
+          type: string
+      - name: radius
+        description: Maximum distance from selected point in meters
+        required: true
+        in: query
+        schema:
+          type: number
+          format: double
+      - name: lon
+        description: Longitude of selected point
+        required: true
+        in: query
+        schema:
+          type: number
+          format: double
+      - name: lat
+        description: Latitude of selected point
+        required: true
+        in: query
+        schema:
+          type: number
+          format: double
+      - name: src_geom
+        description: 'The source of the object geometry.
+
+          Objects from all sources are returned by default.'
+        required: false
+        schema:
+          type: string
+          enum:
+          - osm
+          - wikidata
+          - snow
+          - cultura.ru
+          - rosnedra
+        in: query
+      - name: src_attr
+        description: 'The source of the object attributes.
+
+          It is allowed to point multiple sources separated by commas.
+
+          Objects from all sources are returned by default.'
+        required: false
+        schema:
+          type: string
+          enum:
+          - osm
+          - wikidata
+          - snow
+          - cultura.ru
+          - rosnedra
+          - user
+        in: query
+      - name: kinds
+        description: "Object category. Several comma-separated categories may be stated with OR logic. [see List of categories](https://dev.opentripmap.com/ru/catalog.tree.json). \nObjects from all categories are returned by default."
+        required: false
+        schema:
+          type: string
+        in: query
+      - name: rate
+        description: 'Minimum rating of the object popularity, 1 - minimum, 3- maximum, h - object is referred to the cultural heritage.
+
+          Objects from all categories are returned by default.'
+        required: false
+        schema:
+          type: string
+          enum:
+          - '1'
+          - '2'
+          - '3'
+          - 1h
+          - 2h
+          - 3h
+        in: query
+      - name: format
+        description: The output format (GeoJSON  is set by default). Specify “count” to get the number of obtained objects
+        required: false
+        schema:
+          type: string
+          enum:
+          - json
+          - geojson
+          - count
+        in: query
+      - name: props
+        description: Specify “base” to search only in the objects titles (set by default), specify “address” to search in the objects addresses too
+        required: false
+        schema:
+          type: string
+          enum:
+          - base
+          - address
+        in: query
+      - name: limit
+        description: 'Maximum number of returned objects. 10 is set by default.
+
+          '
+        required: false
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Returns a list of objects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SimpleSuggestFeature'
+            application/geojson:
+              schema:
+                $ref: '#/components/schemas/FeatureCollection'
+        '400':
+          description: Error in query parameters
+components:
+  schemas:
+    SimpleFeature:
+      required:
+      - xid
+      - name
+      - kinds
+      - point
+      type: object
+      properties:
+        xid:
+          description: Unique identifier of the object in OpenTripMap
+          type: string
+        name:
+          description: The name of the object
+          type: string
+        kinds:
+          description: Comma-separated list of categories. [see List of categories](https://dev.opentripmap.com/en/catalog.tree.json)
+          type: string
+        osm:
+          description: OpenStreetMap identifier of the object
+          type: string
+        wikidata:
+          description: Wikidata  identifier of the object
+          type: string
+        dist:
+          description: Distance in meters from selected point (for radius query)
+          type: number
+          format: double
+        point:
+          type: object
+          description: Point location of the object
+          properties:
+            lon:
+              description: Longitude
+              type: number
+              format: double
+            lat:
+              description: Latitude
+              type: number
+              format: double
+      example:
+        name: Oakland City Hall
+        osm: relation/4682064
+        xid: R4682064
+        wikidata: Q932794
+        kind: architecture,other_buildings_and_structures,historic_architecture,interesting_places
+        point:
+          lon: -122.272705
+          lat: 37.80513
+    FeatureCollection:
+      type: object
+      description: Feature Collection
+      externalDocs:
+        url: http://geojson.org/geojson-spec.html#feature-collection-objects
+        description: The GeoJSON Format specification
+      properties:
+        type:
+          type: string
+          enum:
+          - Feature
+          description: FeatureCollection
+        features:
+          type: array
+          items:
+            $ref: '#/components/schemas/Feature'
+    Feature:
+      type: object
+      description: Feature
+      externalDocs:
+        url: http://geojson.org/geojson-spec.html#feature-objects
+        description: The GeoJSON Format specification
+      properties:
+        type:
+          type: string
+          enum:
+          - Feature
+          description: Feature
+        id:
+          type: string
+        geometry:
+          $ref: '#/components/schemas/Geometry'
+        properties:
+          type: object
+          properties:
+            properties:
+              type: object
+              properties:
+                xid:
+                  type: string
+                name:
+                  type: string
+                kinds:
+                  type: string
+                osm:
+                  type: string
+                wikidata:
+                  type: string
+    Geometry:
+      type: object
+      description: GeoJSON geometry
+      externalDocs:
+        url: http://geojson.org/geojson-spec.html#geometry-objects
+        description: The GeoJSON Format specification
+      properties:
+        type:
+          type: string
+          enum:
+          - Point
+          description: Point
+        coordinates:
+          type: array
+          items:
+            type: array
+            items:
+              type: number
+    SimpleSuggestFeature:
+      required:
+      - xid
+      - name
+      - highlighted_name
+      - kinds
+      - point
+      type: object
+      properties:
+        xid:
+          description: Unique identifier of the object in OpenTripMap
+          type: string
+        name:
+          description: The name of the object
+          type: string
+        highlighted_name:
+          description: The name of the object with highlighted search term
+          type: string
+        kinds:
+          description: Comma-separated list of categories. [see List of categories](https://dev.opentripmap.com/en/catalog.tree.json)
+          type: string
+        osm:
+          description: OpenStreetMap identifier of the object
+          type: string
+        wikidata:
+          description: Wikidata  identifier of the object
+          type: string
+        dist:
+          description: Distance in meters from selected point (for radius query)
+          type: number
+          format: double
+        point:
+          type: object
+          description: Point location of the object
+          properties:
+            lon:
+              description: Longitude
+              type: number
+              format: double
+            lat:
+              description: Latitude
+              type: number
+              format: double
+      example:
+        xid: N890538405
+        rate: 1
+        highlighted_name: <b>Don</b> Este
+        name: Don Este
+        osm: node/890538405
+        dist: 456.55705702
+        kinds: foods,fast_food,tourist_facilities
+        point:
+          lon: -70.645576
+          lat: -33.438782
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: apikey
