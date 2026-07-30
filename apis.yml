@@ -11,7 +11,20 @@ description: >
   formats. Licensed under the Open Data Commons Open Database License (ODbL),
   which permits caching, indexing, and redistribution of data.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/opentripmap.png
 url: https://raw.githubusercontent.com/api-evangelist/opentripmap/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -31,31 +44,50 @@ tags:
   - Museums
   - REST API
 apis:
-  - aid: opentripmap:opentripmap-api
-    name: OpenTripMap API
-    description: >
-      REST API providing access to over 10 million tourist attractions and points
-      of interest worldwide. Supports place list queries by bounding box, radius,
-      name, category, and rating; place detail lookups by unique xid identifier;
-      autosuggest for partial search terms; and geographic coordinate lookups for
-      place names. Responses include coordinates, categories, ratings, descriptions,
-      Wikipedia URLs, and OpenStreetMap identifiers.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://dev.opentripmap.org/product
-    baseURL: https://api.opentripmap.com/0.1
-    tags:
-      - Travel
-      - Points of Interest
-      - Tourism
-      - Geospatial
-      - Maps
-    properties:
-      - type: Documentation
-        url: https://dev.opentripmap.org/docs
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/opentripmap/refs/heads/main/openapi/opentripmap-openapi.json
-      - type: Pricing
-        url: https://dev.opentripmap.org/price
+- aid: opentripmap:opentripmap-geographic-coordinates-of-populated-place-api
+  name: OpenTripMap Geographic coordinates of populated place API
+  description: >-
+    The Geographic coordinates of populated place API from OpenTripMap — 1 operation(s) for geographic
+    coordinates of populated place.
+  humanURL: https://dev.opentripmap.org/product
+  baseURL: https://api.opentripmap.com/0.1
+  tags:
+  - Geographic coordinates of populated place
+  properties:
+  - type: OpenAPI
+    url: openapi/opentripmap-geographic-coordinates-of-populated-place-api-openapi.yml
+  - type: Documentation
+    url: https://dev.opentripmap.org/docs
+  - type: Pricing
+    url: https://dev.opentripmap.org/price
+- aid: opentripmap:opentripmap-object-properties-api
+  name: OpenTripMap Object properties API
+  description: The Object properties API from OpenTripMap — 1 operation(s) for object properties.
+  humanURL: https://dev.opentripmap.org/product
+  baseURL: https://api.opentripmap.com/0.1
+  tags:
+  - Object properties
+  properties:
+  - type: OpenAPI
+    url: openapi/opentripmap-object-properties-api-openapi.yml
+  - type: Documentation
+    url: https://dev.opentripmap.org/docs
+  - type: Pricing
+    url: https://dev.opentripmap.org/price
+- aid: opentripmap:opentripmap-objects-list-api
+  name: OpenTripMap Objects list API
+  description: The Objects list API from OpenTripMap — 3 operation(s) for objects list.
+  humanURL: https://dev.opentripmap.org/product
+  baseURL: https://api.opentripmap.com/0.1
+  tags:
+  - Objects list
+  properties:
+  - type: OpenAPI
+    url: openapi/opentripmap-objects-list-api-openapi.yml
+  - type: Documentation
+    url: https://dev.opentripmap.org/docs
+  - type: Pricing
+    url: https://dev.opentripmap.org/price
 common:
   - type: AgenticAccess
     url: agentic-access/opentripmap-agentic-access.yml
