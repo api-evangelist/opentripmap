@@ -1,0 +1,18 @@
+{
+  "provider": "opentripmap",
+  "sources": [
+    "opentripmap-geographic-coordinates-of-populated-place-api-openapi.yml",
+    "opentripmap-object-properties-api-openapi.yml",
+    "opentripmap-objects-list-api-openapi.yml"
+  ],
+  "outputs": [
+    "opentripmap-geographic-coordinates-of-populated-place-api-openapi.yml",
+    "opentripmap-object-properties-api-openapi.yml",
+    "opentripmap-objects-list-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
