@@ -1,0 +1,216 @@
+{
+  "item": [
+    {
+      "id": "67ab91a0-601e-4537-b413-a23a2e8f9cb5",
+      "name": "Geographic coordinates of populated place",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3fb02865-0d43-463f-86cb-fd68e8fc323e",
+          "name": "get Geoname",
+          "request": {
+            "name": "get Geoname",
+            "description": {
+              "content": "Returns geographic coordinates for the given placename (region, city, village, etc.). The method returns the place whose name is most similar to the search string. Service based on GeoNames database.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":lang",
+                "places",
+                "geoname"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "(Required) Placename"
+                },
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>",
+                  "description": "Two-letter country code, ISO-3166 (optional). Default is all countries."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "lang",
+                  "description": "(Required) Two-letter language code (ISO639-1). The following values are available: en (english), ru (russian)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "41aa8c3d-7817-4aa9-9bd1-c4a1caba9dcc",
+              "name": "Returns geographic coordinates",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":lang",
+                    "places",
+                    "geoname"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lang",
+                      "description": "(Required) Two-letter language code (ISO639-1). The following values are available: en (english), ru (russian)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"country\": \"RU\",\n  \"timezone\": \"Europe/Moscow\",\n  \"name\": \"Moscow\",\n  \"lon\": 37.61556,\n  \"lat\": 55.75222,\n  \"population\": 10381222\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c213bd22-c6b2-4e11-9904-9be9f0c83bf5",
+              "name": "Placename is not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":lang",
+                    "places",
+                    "geoname"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lang",
+                      "description": "(Required) Two-letter language code (ISO639-1). The following values are available: en (english), ru (russian)"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.opentripmap.com/0.1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2b1c74b7-f221-4544-95a2-7f1e1acafe31",
+    "name": "OpenTripMap Geographic coordinates of populated place API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Object types are [hierarchically structured](https://dev.opentripmap.org/catalog). \n\nThe return data depend on the requested language. If the object does not contain information in the required language, the data is returned in English or in another available language.\n \n  ## API Requests\n\n * Request for detailed information about a specific object.\n \n   Example: http://api.opentripmap.com/0.1/ru/places/xid/Q372040?apikey=xxxxx - request by the object with ID Q372040.\n   \n \n * Request for a list of objects within the selected area.\n\n   Example: http://api.opentripmap.com/0.1/ru/places/bbox?lon_min=38.364285&lat_min=59.855685&lon_max=38.372809&lat_max=59.859052&kinds=churches&format=geojson&apikey=xxxxx -  request for the list of churches within the selected area.\n      \n \n All parameters are described below. Parameters are passed in the query string and separated by ampersands (&).\n\n \n",
+      "type": "text/plain"
+    }
+  }
+}

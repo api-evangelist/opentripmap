@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenTripMap Geographic coordinates of populated place API",
+    "version": "0.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Geographic coordinates of populated place",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "getGeoname",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opentripmap.com/0.1/:lang/places/geoname",
+            "params": [
+              {
+                "name": "lang",
+                "value": "",
+                "type": "path",
+                "description": "Two-letter language code (ISO639-1). The following values are available: en (english), ru (russian)"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Placename"
+              },
+              {
+                "name": "country",
+                "value": "",
+                "type": "query",
+                "description": "Two-letter country code, ISO-3166 (optional). Default is all countries."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "apikey",
+              "value": "{{apikey}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Returns geographic coordinates for the given placename (region, city, village, etc.). The method returns the place whose name is most similar to the search string. Service based on GeoNames database."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

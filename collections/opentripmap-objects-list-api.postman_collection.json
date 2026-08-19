@@ -1,0 +1,948 @@
+{
+  "item": [
+    {
+      "id": "877d8672-e48c-454b-b59b-7d9976f4c386",
+      "name": "Objects list",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a4382f9e-d692-409f-9c1f-7a6d006c88b6",
+          "name": "get List Of Places By Location",
+          "request": {
+            "name": "get List Of Places By Location",
+            "description": {
+              "content": "Method returns all objects (or number of objects) in the given bounding box optionally filtered by parameters. Only basic information is include in response: xid, name, kinds, osm, wikidata and geometry of each object.\nDepending on the chosen format, the response is either a simple array of objects (with a smaller volume) or an object in GeoJSON format.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":lang",
+                "places",
+                "bbox"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lon_min",
+                  "value": "<double>",
+                  "description": "(Required) Minimum longitude"
+                },
+                {
+                  "disabled": false,
+                  "key": "lon_max",
+                  "value": "<double>",
+                  "description": "(Required) Maximum longitude"
+                },
+                {
+                  "disabled": false,
+                  "key": "lat_min",
+                  "value": "<double>",
+                  "description": "(Required) Minimum latitude"
+                },
+                {
+                  "disabled": false,
+                  "key": "lat_max",
+                  "value": "<double>",
+                  "description": "(Required) Maximum latitude"
+                },
+                {
+                  "disabled": false,
+                  "key": "src_geom",
+                  "value": "<string>",
+                  "description": "The source of the object geometry.\nObjects from all sources are returned by default."
+                },
+                {
+                  "disabled": false,
+                  "key": "src_attr",
+                  "value": "<string>",
+                  "description": "The source of the object attributes.\nIt is allowed to point multiple sources separated by commas.\nObjects from all sources are returned by default."
+                },
+                {
+                  "disabled": false,
+                  "key": "kinds",
+                  "value": "<string>",
+                  "description": "Object category. Several comma-separated categories may be stated with OR logic. [see List of categories](https://dev.opentripmap.org/catalog). \nObjects from interesting_places category are returned by default"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "The text string on which to search at the begining of the object name (mimimum 3 characters). All objects are returned by default."
+                },
+                {
+                  "disabled": false,
+                  "key": "rate",
+                  "value": "<string>",
+                  "description": "Minimum rating of the object popularity, 1 - minimum, 3- maximum, h - object is referred to the cultural heritage.\nObjects from all ratings are returned by default."
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "<string>",
+                  "description": "The output format (GeoJSON  is set by default). Specify “count” to get the number of obtained objects"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "MMaximum number of returned objects. 500 is set by default.\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "lang",
+                  "description": "(Required) Language code (2 characters, ISO639-1). The following values are available: en (english), ru (russian)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "78511006-f415-4b7a-beb8-7f3be35a7c69",
+              "name": "Returns a list of objects",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":lang",
+                    "places",
+                    "bbox"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lon_min",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "lon_max",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "lat_min",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "lat_max",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "src_geom",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "src_attr",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "kinds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lang",
+                      "description": "(Required) Language code (2 characters, ISO639-1). The following values are available: en (english), ru (russian)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"xid\": \"string\",\n    \"name\": \"string\",\n    \"kinds\": \"string\",\n    \"point\": {\n      \"lon\": 1555.3967226544362,\n      \"lat\": 8963.492884324542\n    },\n    \"osm\": \"string\",\n    \"wikidata\": \"string\",\n    \"dist\": 7478.334272689577\n  },\n  {\n    \"xid\": \"string\",\n    \"name\": \"string\",\n    \"kinds\": \"string\",\n    \"point\": {\n      \"lon\": 3268.225797743037,\n      \"lat\": 6581.789311975112\n    },\n    \"osm\": \"string\",\n    \"wikidata\": \"string\",\n    \"dist\": 4458.186448593426\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "74283728-ba9a-48d3-bac5-8b6b7e8e820c",
+              "name": "Error in query parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":lang",
+                    "places",
+                    "bbox"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lon_min",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "lon_max",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "lat_min",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "lat_max",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "src_geom",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "src_attr",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "kinds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lang",
+                      "description": "(Required) Language code (2 characters, ISO639-1). The following values are available: en (english), ru (russian)"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d7fe435d-765b-46bb-9c83-fc15a5f6aaaa",
+          "name": "get List Of Places By Radius",
+          "request": {
+            "name": "get List Of Places By Radius",
+            "description": {
+              "content": "Method returns objects closest to the selected point optionally filtered by parameters. Only basic information is include in response: xid, name, kinds, osm, wikidata and geometry of each object.\nDepending on the chosen format, the response is either a simple array of objects (with a smaller volume) or an object in GeoJSON format.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":lang",
+                "places",
+                "radius"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "radius",
+                  "value": "<double>",
+                  "description": "(Required) Maximum distance from selected point in meters"
+                },
+                {
+                  "disabled": false,
+                  "key": "lon",
+                  "value": "<double>",
+                  "description": "(Required) Longitude of selected point"
+                },
+                {
+                  "disabled": false,
+                  "key": "lat",
+                  "value": "<double>",
+                  "description": "(Required) Latitude of selected point"
+                },
+                {
+                  "disabled": false,
+                  "key": "src_geom",
+                  "value": "<string>",
+                  "description": "The source of the object geometry.\nObjects from all sources are returned by default."
+                },
+                {
+                  "disabled": false,
+                  "key": "src_attr",
+                  "value": "<string>",
+                  "description": "The source of the object attributes.\nIt is allowed to point multiple sources separated by commas.\nObjects from all sources are returned by default."
+                },
+                {
+                  "disabled": false,
+                  "key": "kinds",
+                  "value": "<string>",
+                  "description": "Object category. Several comma-separated categories may be stated with OR logic. [see List of categories](https://dev.opentripmap.org/catalog). \nObjects from interesting_places category are returned by default."
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "The text string on which to search at the begining of the object name (mimimum 3 characters). All objects are returned by default."
+                },
+                {
+                  "disabled": false,
+                  "key": "rate",
+                  "value": "<string>",
+                  "description": "Minimum rating of the object popularity, 1 - minimum, 3- maximum, h - object is referred to the cultural heritage.\nObjects from all ratings are returned by default."
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "<string>",
+                  "description": "The output format (GeoJSON  is set by default). Specify “count” to get the number of obtained objects"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Maximum number of returned objects. 500 is set by default.\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "lang",
+                  "description": "(Required) Language code (2 characters, ISO639-1). The following values are available: en (english), ru (russian)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "59578aca-fbce-41b3-b7e5-0d060782b4bf",
+              "name": "Returns a list of objects",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":lang",
+                    "places",
+                    "radius"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "radius",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "lat",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "src_geom",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "src_attr",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "kinds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lang",
+                      "description": "(Required) Language code (2 characters, ISO639-1). The following values are available: en (english), ru (russian)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"xid\": \"string\",\n    \"name\": \"string\",\n    \"kinds\": \"string\",\n    \"point\": {\n      \"lon\": 1555.3967226544362,\n      \"lat\": 8963.492884324542\n    },\n    \"osm\": \"string\",\n    \"wikidata\": \"string\",\n    \"dist\": 7478.334272689577\n  },\n  {\n    \"xid\": \"string\",\n    \"name\": \"string\",\n    \"kinds\": \"string\",\n    \"point\": {\n      \"lon\": 3268.225797743037,\n      \"lat\": 6581.789311975112\n    },\n    \"osm\": \"string\",\n    \"wikidata\": \"string\",\n    \"dist\": 4458.186448593426\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "95a2c629-5995-428b-8a64-4d02f2df2c6b",
+              "name": "Error in query parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":lang",
+                    "places",
+                    "radius"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "radius",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "lat",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "src_geom",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "src_attr",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "kinds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lang",
+                      "description": "(Required) Language code (2 characters, ISO639-1). The following values are available: en (english), ru (russian)"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e289317c-7c00-43c0-bef4-72e9ef14d4bc",
+          "name": "get List Of Places By Suggestions",
+          "request": {
+            "name": "get List Of Places By Suggestions",
+            "description": {
+              "content": "Method returns suggestions for search term closest to the selected point optionally filtered by parameters. Only basic information is include in response: xid, name, kinds, osm, wikidata of each object. Depending on the chosen format, the response is either a simple array of objects (with a smaller volume) or an object in GeoJSON format.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":lang",
+                "places",
+                "autosuggest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "(Required) The query term on which to search. The minimum number of characters for name is 3"
+                },
+                {
+                  "disabled": false,
+                  "key": "radius",
+                  "value": "<double>",
+                  "description": "(Required) Maximum distance from selected point in meters"
+                },
+                {
+                  "disabled": false,
+                  "key": "lon",
+                  "value": "<double>",
+                  "description": "(Required) Longitude of selected point"
+                },
+                {
+                  "disabled": false,
+                  "key": "lat",
+                  "value": "<double>",
+                  "description": "(Required) Latitude of selected point"
+                },
+                {
+                  "disabled": false,
+                  "key": "src_geom",
+                  "value": "<string>",
+                  "description": "The source of the object geometry.\nObjects from all sources are returned by default."
+                },
+                {
+                  "disabled": false,
+                  "key": "src_attr",
+                  "value": "<string>",
+                  "description": "The source of the object attributes.\nIt is allowed to point multiple sources separated by commas.\nObjects from all sources are returned by default."
+                },
+                {
+                  "disabled": false,
+                  "key": "kinds",
+                  "value": "<string>",
+                  "description": "Object category. Several comma-separated categories may be stated with OR logic. [see List of categories](https://dev.opentripmap.com/ru/catalog.tree.json). \nObjects from all categories are returned by default."
+                },
+                {
+                  "disabled": false,
+                  "key": "rate",
+                  "value": "<string>",
+                  "description": "Minimum rating of the object popularity, 1 - minimum, 3- maximum, h - object is referred to the cultural heritage.\nObjects from all categories are returned by default."
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "<string>",
+                  "description": "The output format (GeoJSON  is set by default). Specify “count” to get the number of obtained objects"
+                },
+                {
+                  "disabled": false,
+                  "key": "props",
+                  "value": "<string>",
+                  "description": "Specify “base” to search only in the objects titles (set by default), specify “address” to search in the objects addresses too"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Maximum number of returned objects. 10 is set by default.\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "lang",
+                  "description": "(Required) Language code (2 characters, ISO639-1). The following values are available: en (english), ru (russian)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3b94b515-ad35-4c1e-9929-c58a8acfecc3",
+              "name": "Returns a list of objects",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":lang",
+                    "places",
+                    "autosuggest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "radius",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "lat",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "src_geom",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "src_attr",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "kinds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "props",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lang",
+                      "description": "(Required) Language code (2 characters, ISO639-1). The following values are available: en (english), ru (russian)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"xid\": \"N890538405\",\n    \"rate\": 1,\n    \"highlighted_name\": \"<b>Don</b> Este\",\n    \"name\": \"Don Este\",\n    \"osm\": \"node/890538405\",\n    \"dist\": 456.55705702,\n    \"kinds\": \"foods,fast_food,tourist_facilities\",\n    \"point\": {\n      \"lon\": -70.645576,\n      \"lat\": -33.438782\n    }\n  },\n  {\n    \"xid\": \"N890538405\",\n    \"rate\": 1,\n    \"highlighted_name\": \"<b>Don</b> Este\",\n    \"name\": \"Don Este\",\n    \"osm\": \"node/890538405\",\n    \"dist\": 456.55705702,\n    \"kinds\": \"foods,fast_food,tourist_facilities\",\n    \"point\": {\n      \"lon\": -70.645576,\n      \"lat\": -33.438782\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1d729cef-80bf-41d1-84f8-90543e050e71",
+              "name": "Error in query parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":lang",
+                    "places",
+                    "autosuggest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "radius",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "lat",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "src_geom",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "src_attr",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "kinds",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "props",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lang",
+                      "description": "(Required) Language code (2 characters, ISO639-1). The following values are available: en (english), ru (russian)"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.opentripmap.com/0.1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "395b267e-18ee-476c-ab6e-14154a4bb8b0",
+    "name": "OpenTripMap Geographic coordinates of populated place Objects list API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Object types are [hierarchically structured](https://dev.opentripmap.org/catalog). \n\nThe return data depend on the requested language. If the object does not contain information in the required language, the data is returned in English or in another available language.\n \n  ## API Requests\n\n * Request for detailed information about a specific object.\n \n   Example: http://api.opentripmap.com/0.1/ru/places/xid/Q372040?apikey=xxxxx - request by the object with ID Q372040.\n   \n \n * Request for a list of objects within the selected area.\n\n   Example: http://api.opentripmap.com/0.1/ru/places/bbox?lon_min=38.364285&lat_min=59.855685&lon_max=38.372809&lat_max=59.859052&kinds=churches&format=geojson&apikey=xxxxx -  request for the list of churches within the selected area.\n      \n \n All parameters are described below. Parameters are passed in the query string and separated by ampersands (&).\n\n \n",
+      "type": "text/plain"
+    }
+  }
+}

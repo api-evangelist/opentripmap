@@ -1,0 +1,211 @@
+{
+  "item": [
+    {
+      "id": "80b4d655-4a1c-4666-ac76-e01b55dfd488",
+      "name": "Object properties",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0605509b-25e0-4f89-a86b-bd727aaf571e",
+          "name": "get Place By Xid",
+          "request": {
+            "name": "get Place By Xid",
+            "description": {
+              "content": "Returns detailed information about the object. Objects can contain different amount of information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":lang",
+                "places",
+                "xid",
+                ":xid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "lang",
+                  "description": "(Required) Two-letter language code (ISO639-1). The following values are available: en (english), ru (russian)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "xid",
+                  "description": "(Required) Unique identifier of the object in OpenTripMap"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "apikey"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8c0f10a1-ffa6-4a6e-87fc-2cd52e888ce7",
+              "name": "Returns object properties",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":lang",
+                    "places",
+                    "xid",
+                    ":xid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lang",
+                      "description": "(Required) Two-letter language code (ISO639-1). The following values are available: en (english), ru (russian)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "xid",
+                      "description": "(Required) Unique identifier of the object in OpenTripMap"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"xid\": \"string\",\n  \"name\": \"string\",\n  \"sources\": {\n    \"geometry\": \"snow\",\n    \"attributes\": [\n      \"snow\",\n      \"user\"\n    ]\n  },\n  \"otm\": \"string\",\n  \"rate\": \"1h\",\n  \"point\": {\n    \"lon\": 8428.315559382096,\n    \"lat\": 9483.927773852734\n  },\n  \"kinds\": \"string\",\n  \"osm\": \"string\",\n  \"wikidata\": \"string\",\n  \"image\": \"string\",\n  \"preview\": {\n    \"source\": \"string\",\n    \"width\": 6701,\n    \"height\": 6879\n  },\n  \"wikipedia\": \"string\",\n  \"wikipedia_extracts\": {\n    \"title\": \"string\",\n    \"text\": \"string\",\n    \"html\": \"string\"\n  },\n  \"voyage\": \"string\",\n  \"url\": \"string\",\n  \"info\": {\n    \"src\": \"string\",\n    \"src_id\": 368,\n    \"descr\": \"string\"\n  },\n  \"bbox\": {\n    \"lon_min\": 452.715696946836,\n    \"lon_max\": 7834.366333161937,\n    \"lat_min\": 7228.930411975291,\n    \"lat_max\": 7715.474600102163\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1b9d2317-5de5-4c88-8e6f-71fcc14948db",
+              "name": "Object is not found in OpenTripMap",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":lang",
+                    "places",
+                    "xid",
+                    ":xid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "apikey",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lang",
+                      "description": "(Required) Two-letter language code (ISO639-1). The following values are available: en (english), ru (russian)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "xid",
+                      "description": "(Required) Unique identifier of the object in OpenTripMap"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.opentripmap.com/0.1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ef10ad1c-88cd-41a7-825d-7c9c204f381f",
+    "name": "OpenTripMap Geographic coordinates of populated place Object properties API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Object types are [hierarchically structured](https://dev.opentripmap.org/catalog). \n\nThe return data depend on the requested language. If the object does not contain information in the required language, the data is returned in English or in another available language.\n \n  ## API Requests\n\n * Request for detailed information about a specific object.\n \n   Example: http://api.opentripmap.com/0.1/ru/places/xid/Q372040?apikey=xxxxx - request by the object with ID Q372040.\n   \n \n * Request for a list of objects within the selected area.\n\n   Example: http://api.opentripmap.com/0.1/ru/places/bbox?lon_min=38.364285&lat_min=59.855685&lon_max=38.372809&lat_max=59.859052&kinds=churches&format=geojson&apikey=xxxxx -  request for the list of churches within the selected area.\n      \n \n All parameters are described below. Parameters are passed in the query string and separated by ampersands (&).\n\n \n",
+      "type": "text/plain"
+    }
+  }
+}

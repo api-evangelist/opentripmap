@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenTripMap Geographic coordinates of populated place Object properties API",
+    "version": "0.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Object properties",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "getPlaceByXid",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opentripmap.com/0.1/:lang/places/xid/:xid",
+            "params": [
+              {
+                "name": "lang",
+                "value": "",
+                "type": "path",
+                "description": "Two-letter language code (ISO639-1). The following values are available: en (english), ru (russian)"
+              },
+              {
+                "name": "xid",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the object in OpenTripMap"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "apikey",
+              "value": "{{apikey}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Returns detailed information about the object. Objects can contain different amount of information."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,285 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenTripMap Geographic coordinates of populated place Objects list API",
+    "version": "0.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Objects list",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "getListOfPlacesByLocation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opentripmap.com/0.1/:lang/places/bbox",
+            "params": [
+              {
+                "name": "lang",
+                "value": "",
+                "type": "path",
+                "description": "Language code (2 characters, ISO639-1). The following values are available: en (english), ru (russian)"
+              },
+              {
+                "name": "lon_min",
+                "value": "",
+                "type": "query",
+                "description": "Minimum longitude"
+              },
+              {
+                "name": "lon_max",
+                "value": "",
+                "type": "query",
+                "description": "Maximum longitude"
+              },
+              {
+                "name": "lat_min",
+                "value": "",
+                "type": "query",
+                "description": "Minimum latitude"
+              },
+              {
+                "name": "lat_max",
+                "value": "",
+                "type": "query",
+                "description": "Maximum latitude"
+              },
+              {
+                "name": "src_geom",
+                "value": "",
+                "type": "query",
+                "description": "The source of the object geometry.\nObjects from all sources are returned by default."
+              },
+              {
+                "name": "src_attr",
+                "value": "",
+                "type": "query",
+                "description": "The source of the object attributes.\nIt is allowed to point multiple sources separated by commas.\nObjects from all sources are returned by default."
+              },
+              {
+                "name": "kinds",
+                "value": "",
+                "type": "query",
+                "description": "Object category. Several comma-separated categories may be stated with OR logic. [see List of categories](https://dev.opentripmap.org/catalog). \nObjects from interesting_places category are returned by default"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "The text string on which to search at the begining of the object name (mimimum 3 characters). All objects are returned by default."
+              },
+              {
+                "name": "rate",
+                "value": "",
+                "type": "query",
+                "description": "Minimum rating of the object popularity, 1 - minimum, 3- maximum, h - object is referred to the cultural heritage.\nObjects from all ratings are returned by default."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The output format (GeoJSON  is set by default). Specify “count” to get the number of obtained objects"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "MMaximum number of returned objects. 500 is set by default.\n"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "apikey",
+              "value": "{{apikey}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Method returns all objects (or number of objects) in the given bounding box optionally filtered by parameters. Only basic information is include in response: xid, name, kinds, osm, wikidata and geometry of each object.\nDepending on the chosen format, the response is either a simple array of objects (with a smaller volume) or an object in GeoJSON format."
+        },
+        {
+          "info": {
+            "name": "getListOfPlacesByRadius",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opentripmap.com/0.1/:lang/places/radius",
+            "params": [
+              {
+                "name": "lang",
+                "value": "",
+                "type": "path",
+                "description": "Language code (2 characters, ISO639-1). The following values are available: en (english), ru (russian)"
+              },
+              {
+                "name": "radius",
+                "value": "",
+                "type": "query",
+                "description": "Maximum distance from selected point in meters"
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Longitude of selected point"
+              },
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Latitude of selected point"
+              },
+              {
+                "name": "src_geom",
+                "value": "",
+                "type": "query",
+                "description": "The source of the object geometry.\nObjects from all sources are returned by default."
+              },
+              {
+                "name": "src_attr",
+                "value": "",
+                "type": "query",
+                "description": "The source of the object attributes.\nIt is allowed to point multiple sources separated by commas.\nObjects from all sources are returned by default."
+              },
+              {
+                "name": "kinds",
+                "value": "",
+                "type": "query",
+                "description": "Object category. Several comma-separated categories may be stated with OR logic. [see List of categories](https://dev.opentripmap.org/catalog). \nObjects from interesting_places category are returned by default."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "The text string on which to search at the begining of the object name (mimimum 3 characters). All objects are returned by default."
+              },
+              {
+                "name": "rate",
+                "value": "",
+                "type": "query",
+                "description": "Minimum rating of the object popularity, 1 - minimum, 3- maximum, h - object is referred to the cultural heritage.\nObjects from all ratings are returned by default."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The output format (GeoJSON  is set by default). Specify “count” to get the number of obtained objects"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of returned objects. 500 is set by default.\n"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "apikey",
+              "value": "{{apikey}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Method returns objects closest to the selected point optionally filtered by parameters. Only basic information is include in response: xid, name, kinds, osm, wikidata and geometry of each object.\nDepending on the chosen format, the response is either a simple array of objects (with a smaller volume) or an object in GeoJSON format."
+        },
+        {
+          "info": {
+            "name": "getListOfPlacesBySuggestions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opentripmap.com/0.1/:lang/places/autosuggest",
+            "params": [
+              {
+                "name": "lang",
+                "value": "",
+                "type": "path",
+                "description": "Language code (2 characters, ISO639-1). The following values are available: en (english), ru (russian)"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "The query term on which to search. The minimum number of characters for name is 3"
+              },
+              {
+                "name": "radius",
+                "value": "",
+                "type": "query",
+                "description": "Maximum distance from selected point in meters"
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Longitude of selected point"
+              },
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Latitude of selected point"
+              },
+              {
+                "name": "src_geom",
+                "value": "",
+                "type": "query",
+                "description": "The source of the object geometry.\nObjects from all sources are returned by default."
+              },
+              {
+                "name": "src_attr",
+                "value": "",
+                "type": "query",
+                "description": "The source of the object attributes.\nIt is allowed to point multiple sources separated by commas.\nObjects from all sources are returned by default."
+              },
+              {
+                "name": "kinds",
+                "value": "",
+                "type": "query",
+                "description": "Object category. Several comma-separated categories may be stated with OR logic. [see List of categories](https://dev.opentripmap.com/ru/catalog.tree.json). \nObjects from all categories are returned by default."
+              },
+              {
+                "name": "rate",
+                "value": "",
+                "type": "query",
+                "description": "Minimum rating of the object popularity, 1 - minimum, 3- maximum, h - object is referred to the cultural heritage.\nObjects from all categories are returned by default."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The output format (GeoJSON  is set by default). Specify “count” to get the number of obtained objects"
+              },
+              {
+                "name": "props",
+                "value": "",
+                "type": "query",
+                "description": "Specify “base” to search only in the objects titles (set by default), specify “address” to search in the objects addresses too"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of returned objects. 10 is set by default.\n"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "apikey",
+              "value": "{{apikey}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Method returns suggestions for search term closest to the selected point optionally filtered by parameters. Only basic information is include in response: xid, name, kinds, osm, wikidata of each object. Depending on the chosen format, the response is either a simple array of objects (with a smaller volume) or an object in GeoJSON format."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
