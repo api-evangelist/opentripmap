@@ -1,8 +1,8 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: OpenTripMap Geographic coordinates of populated place Objects list API
+  title: OpenTripMap Objects list API
   version: 0.0.1
-  description: "Object types are [hierarchically structured](https://dev.opentripmap.org/catalog). \n\nThe return data depend on the requested language. If the object does not contain information in the required language, the data is returned in English or in another available language.\n \n  ## API Requests\n\n * Request for detailed information about a specific object.\n \n   Example: http://api.opentripmap.com/0.1/ru/places/xid/Q372040?apikey=xxxxx - request by the object with ID Q372040.\n   \n \n * Request for a list of objects within the selected area.\n\n   Example: http://api.opentripmap.com/0.1/ru/places/bbox?lon_min=38.364285&lat_min=59.855685&lon_max=38.372809&lat_max=59.859052&kinds=churches&format=geojson&apikey=xxxxx -  request for the list of churches within the selected area.\n      \n \n All parameters are described below. Parameters are passed in the query string and separated by ampersands (&).\n\n \n"
+  description: Object types are hierarchically structured.
 servers:
 - url: https://api.opentripmap.com/0.1
 - url: http://api.opentripmap.com/0.1
@@ -147,6 +147,8 @@ paths:
                 $ref: '#/components/schemas/FeatureCollection'
         '400':
           description: Error in query parameters
+      summary: Get list of places by location
+      x-summary-source: derived
   /{lang}/places/radius:
     get:
       security:
@@ -278,6 +280,8 @@ paths:
                 $ref: '#/components/schemas/FeatureCollection'
         '400':
           description: Error in query parameters
+      summary: Get list of places by radius
+      x-summary-source: derived
   /{lang}/places/autosuggest:
     get:
       security:
@@ -416,72 +420,10 @@ paths:
                 $ref: '#/components/schemas/FeatureCollection'
         '400':
           description: Error in query parameters
+      summary: Get list of places by suggestions
+      x-summary-source: derived
 components:
   schemas:
-    SimpleFeature:
-      required:
-      - xid
-      - name
-      - kinds
-      - point
-      type: object
-      properties:
-        xid:
-          description: Unique identifier of the object in OpenTripMap
-          type: string
-        name:
-          description: The name of the object
-          type: string
-        kinds:
-          description: Comma-separated list of categories. [see List of categories](https://dev.opentripmap.com/en/catalog.tree.json)
-          type: string
-        osm:
-          description: OpenStreetMap identifier of the object
-          type: string
-        wikidata:
-          description: Wikidata  identifier of the object
-          type: string
-        dist:
-          description: Distance in meters from selected point (for radius query)
-          type: number
-          format: double
-        point:
-          type: object
-          description: Point location of the object
-          properties:
-            lon:
-              description: Longitude
-              type: number
-              format: double
-            lat:
-              description: Latitude
-              type: number
-              format: double
-      example:
-        name: Oakland City Hall
-        osm: relation/4682064
-        xid: R4682064
-        wikidata: Q932794
-        kind: architecture,other_buildings_and_structures,historic_architecture,interesting_places
-        point:
-          lon: -122.272705
-          lat: 37.80513
-    FeatureCollection:
-      type: object
-      description: Feature Collection
-      externalDocs:
-        url: http://geojson.org/geojson-spec.html#feature-collection-objects
-        description: The GeoJSON Format specification
-      properties:
-        type:
-          type: string
-          enum:
-          - Feature
-          description: FeatureCollection
-        features:
-          type: array
-          items:
-            $ref: '#/components/schemas/Feature'
     Feature:
       type: object
       description: Feature
@@ -514,24 +456,6 @@ components:
                   type: string
                 wikidata:
                   type: string
-    Geometry:
-      type: object
-      description: GeoJSON geometry
-      externalDocs:
-        url: http://geojson.org/geojson-spec.html#geometry-objects
-        description: The GeoJSON Format specification
-      properties:
-        type:
-          type: string
-          enum:
-          - Point
-          description: Point
-        coordinates:
-          type: array
-          items:
-            type: array
-            items:
-              type: number
     SimpleSuggestFeature:
       required:
       - xid
@@ -586,6 +510,88 @@ components:
         point:
           lon: -70.645576
           lat: -33.438782
+    FeatureCollection:
+      type: object
+      description: Feature Collection
+      externalDocs:
+        url: http://geojson.org/geojson-spec.html#feature-collection-objects
+        description: The GeoJSON Format specification
+      properties:
+        type:
+          type: string
+          enum:
+          - Feature
+          description: FeatureCollection
+        features:
+          type: array
+          items:
+            $ref: '#/components/schemas/Feature'
+    Geometry:
+      type: object
+      description: GeoJSON geometry
+      externalDocs:
+        url: http://geojson.org/geojson-spec.html#geometry-objects
+        description: The GeoJSON Format specification
+      properties:
+        type:
+          type: string
+          enum:
+          - Point
+          description: Point
+        coordinates:
+          type: array
+          items:
+            type: array
+            items:
+              type: number
+    SimpleFeature:
+      required:
+      - xid
+      - name
+      - kinds
+      - point
+      type: object
+      properties:
+        xid:
+          description: Unique identifier of the object in OpenTripMap
+          type: string
+        name:
+          description: The name of the object
+          type: string
+        kinds:
+          description: Comma-separated list of categories. [see List of categories](https://dev.opentripmap.com/en/catalog.tree.json)
+          type: string
+        osm:
+          description: OpenStreetMap identifier of the object
+          type: string
+        wikidata:
+          description: Wikidata  identifier of the object
+          type: string
+        dist:
+          description: Distance in meters from selected point (for radius query)
+          type: number
+          format: double
+        point:
+          type: object
+          description: Point location of the object
+          properties:
+            lon:
+              description: Longitude
+              type: number
+              format: double
+            lat:
+              description: Latitude
+              type: number
+              format: double
+      example:
+        name: Oakland City Hall
+        osm: relation/4682064
+        xid: R4682064
+        wikidata: Q932794
+        kind: architecture,other_buildings_and_structures,historic_architecture,interesting_places
+        point:
+          lon: -122.272705
+          lat: 37.80513
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

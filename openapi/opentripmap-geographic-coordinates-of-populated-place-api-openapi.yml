@@ -1,8 +1,8 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   title: OpenTripMap Geographic coordinates of populated place API
   version: 0.0.1
-  description: "Object types are [hierarchically structured](https://dev.opentripmap.org/catalog). \n\nThe return data depend on the requested language. If the object does not contain information in the required language, the data is returned in English or in another available language.\n \n  ## API Requests\n\n * Request for detailed information about a specific object.\n \n   Example: http://api.opentripmap.com/0.1/ru/places/xid/Q372040?apikey=xxxxx - request by the object with ID Q372040.\n   \n \n * Request for a list of objects within the selected area.\n\n   Example: http://api.opentripmap.com/0.1/ru/places/bbox?lon_min=38.364285&lat_min=59.855685&lon_max=38.372809&lat_max=59.859052&kinds=churches&format=geojson&apikey=xxxxx -  request for the list of churches within the selected area.\n      \n \n All parameters are described below. Parameters are passed in the query string and separated by ampersands (&).\n\n \n"
+  description: Object types are hierarchically structured.
 servers:
 - url: https://api.opentripmap.com/0.1
 - url: http://api.opentripmap.com/0.1
@@ -45,6 +45,8 @@ paths:
                 $ref: '#/components/schemas/Geoname'
         '404':
           description: Placename is not found
+      summary: Get geoname
+      x-summary-source: derived
 components:
   schemas:
     Geoname:
