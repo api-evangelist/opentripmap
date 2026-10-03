@@ -494,24 +494,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Feature'
-    Geometry:
-      type: object
-      description: GeoJSON geometry
-      externalDocs:
-        url: http://geojson.org/geojson-spec.html#geometry-objects
-        description: The GeoJSON Format specification
-      properties:
-        type:
-          type: string
-          enum:
-          - Point
-          description: Point
-        coordinates:
-          type: array
-          items:
-            type: array
-            items:
-              type: number
     SimpleFeature:
       required:
       - xid
@@ -592,6 +574,24 @@ components:
                   type: string
                 wikidata:
                   type: string
+    Geometry:
+      type: object
+      description: GeoJSON geometry
+      externalDocs:
+        url: http://geojson.org/geojson-spec.html#geometry-objects
+        description: The GeoJSON Format specification
+      properties:
+        type:
+          type: string
+          enum:
+          - Point
+          description: Point
+        coordinates:
+          type: array
+          items:
+            type: array
+            items:
+              type: number
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
