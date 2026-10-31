@@ -64,27 +64,154 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-OpenTripMap provides a travel points of interest REST API with access to over 10 million POIs worldwide including attractions, restaurants, hotels, museums, and natural features. The API integrates data from OpenStreetMap, Wikidata, Wikipedia, and government cultural and environmental registries to deliver rich POI details with descriptions, coordinates, categorization, and Wikipedia links across more than 150 attraction types.
+OpenTripMap provides a travel points of interest REST API with access to over 10 million POIs worldwide including attractions, restaurants, hotels, museums, and natural features. The API integrates data from OpenStreetMap, Wikidata, Wikipedia, and government cultural and environmental registries to deliver rich POI details with descriptions, coordinates, categorization, and Wikipedia links across more than 150 attraction types. Developers can query by bounding box, radius, name, category, and rating, with responses available in JSON and GeoJSON formats. Licensed under the Open Data Commons Open Database License (ODbL), which permits caching, indexing, and redistribution of data.
 
-## Links
+**Areas:** Travel · Points of Interest · POI · Tourism · Maps · Geospatial · OpenStreetMap · Wikipedia · Attractions · Restaurant · Hotels · Museums
 
-- **Website**: https://opentripmap.com/en/
-- **API Portal**: https://dev.opentripmap.org/product
-- **Documentation**: https://dev.opentripmap.org/docs
-- **Pricing**: https://dev.opentripmap.org/price
-- **LinkedIn**: https://www.linkedin.com/company/opentripmap
+## OpenTripMap on APIs.io
 
-## APIs
+Everything profiled for OpenTripMap is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/opentripmap/](https://apis.io/providers/opentripmap/)** — or go straight to one of the APIs or properties below.
 
-- **OpenTripMap API** - REST API for points of interest worldwide
+### APIs (3)
 
-## Contents
+- [OpenTripMap Geographic coordinates of populated place API](https://apis.io/apis/opentripmap/opentripmap-geographic-coordinates-of-populated-place-api/) — The Geographic coordinates of populated place API from OpenTripMap — 1 operation(s) for geographic coordinates of populated place.
+- [OpenTripMap Object properties API](https://apis.io/apis/opentripmap/opentripmap-object-properties-api/) — The Object properties API from OpenTripMap — 1 operation(s) for object properties.
+- [OpenTripMap Objects list API](https://apis.io/apis/opentripmap/opentripmap-objects-list-api/) — The Objects list API from OpenTripMap — 3 operation(s) for objects list.
 
-- `apis.yml` - APIs.json 0.19 provider profile
-- `plans/opentripmap-plans-pricing.yml` - Pricing plans and tiers
-- `rate-limits/opentripmap-rate-limits.yml` - Rate limiting policies
-- `finops/opentripmap-finops.yml` - FinOps cost management guidance
+### Published properties
 
-## Maintainer
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-**Kin Lane** - kin@apievangelist.com
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Opentripmap Agentic Access](https://apis.io/agentic-access/opentripmap/opentripmap-agentic-access/)
+
+#### JSON Schema (7)
+
+The data models the API reads and writes.
+
+- [Feature](https://apis.io/schemas/opentripmap/feature/)
+- [FeatureCollection](https://apis.io/schemas/opentripmap/featurecollection/)
+- [Geometry](https://apis.io/schemas/opentripmap/geometry/)
+- [Geoname](https://apis.io/schemas/opentripmap/geoname/)
+- [Places](https://apis.io/schemas/opentripmap/places/)
+- [SimpleFeature](https://apis.io/schemas/opentripmap/simplefeature/)
+- [SimpleSuggestFeature](https://apis.io/schemas/opentripmap/simplesuggestfeature/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Opentripmap Context](https://apis.io/jsonld/opentripmap/opentripmap-context/)
+
+#### Examples (3)
+
+Example requests and responses.
+
+- [Geoname Response](https://apis.io/examples/opentripmap/geoname-response/)
+- [Place Detail Response](https://apis.io/examples/opentripmap/place-detail-response/)
+- [Radius Geojson Response](https://apis.io/examples/opentripmap/radius-geojson-response/)
+
+#### Collections (3)
+
+Postman and Open Collection request collections.
+
+- [OpenTripMap Geographic coordinates of populated place API](https://apis.io/collections/opentripmap/open-opentripmap-geographic-coordinates-of-populated-place-api/)
+- [OpenTripMap Geographic coordinates of populated place Object properties API](https://apis.io/collections/opentripmap/open-opentripmap-object-properties-api/)
+- [OpenTripMap Geographic coordinates of populated place Objects list API](https://apis.io/collections/opentripmap/open-opentripmap-objects-list-api/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [OpenTripMap — jsonschema rules](https://apis.io/rules/opentripmap/opentripmap-jsonschema-spectral-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Opentripmap Authentication](https://apis.io/security/opentripmap/opentripmap-authentication/)
+- [Opentripmap Domain Security](https://apis.io/security/opentripmap/opentripmap-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Opentripmap Plans Pricing](https://apis.io/plans/opentripmap/opentripmap-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Opentripmap Rate Limits](https://apis.io/rate-limits/opentripmap/opentripmap-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Opentripmap Finops](https://apis.io/finops/opentripmap/opentripmap-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://opentripmap.com/en/)
+- [Documentation](https://dev.opentripmap.org/docs)
+- [Pricing](https://dev.opentripmap.org/price)
+- [Blog](https://opentripmap.com/en/)
+- [Status](https://dev.opentripmap.org/)
+
+## API Evangelist rating
+
+**Kin Score 32.2** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 52.0 |
+| Contract governance | 9.8 |
+| Operational transparency | 21.1 |
+| Developer ergonomics | 23.8 |
+| Access clarity | 18.4 |
+
+**Agent readiness 20.7** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | na |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 16.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/opentripmap/](https://apis.io/providers/opentripmap/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for OpenTripMap: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/opentripmap/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
